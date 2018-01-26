@@ -26,4 +26,14 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.TEXT
       }
     });
+
+    Book.associate = function(models) {
+        // We're saying that a Book should belong to User
+        // A Book can't be created without User due to the foreign key constraint
+        Book.belongsTo(models.User, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      };
 };

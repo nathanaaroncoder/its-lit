@@ -42,6 +42,9 @@ module.exports = function(sequelize, DataTypes) {
       },
       classic: {
         type: DataTypes.BOOLEAN
+      },
+      other: {
+        type: DataTypes.BOOLEAN
       }
     });
 };
