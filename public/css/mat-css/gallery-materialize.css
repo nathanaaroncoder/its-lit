@@ -4981,7 +4981,7 @@ small {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  background-color: #53b7e7;
   text-align: center;
   letter-spacing: .5px;
   transition: .2s ease-out;
@@ -5293,10 +5293,12 @@ button.btn-floating {
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
-
+  opacity: 0;
   background: rgba(0, 0, 0, 0.2);
   transition: all 0.7s ease-out;
-
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
   -webkit-transform: scale(0);
           transform: scale(0);
   pointer-events: none;
