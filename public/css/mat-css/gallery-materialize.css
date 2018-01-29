@@ -3999,7 +3999,7 @@ nav ul a span.badge {
 
 nav {
   color: #fff;
-  background-color: #ba68c8;
+  background-color: #e34e4e;
   width: 100%;
   height: 56px;
   line-height: 56px;
@@ -5240,7 +5240,7 @@ button.btn-floating {
 
 .dropdown-content li > a, .dropdown-content li > span {
   font-size: 16px;
-  color: #26a69a;
+  color: #bd65a3;
   display: block;
   line-height: 22px;
   padding: 14px 16px;
@@ -5293,12 +5293,10 @@ button.btn-floating {
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
-  opacity: 0;
+
   background: rgba(0, 0, 0, 0.2);
   transition: all 0.7s ease-out;
-  transition-property: opacity, -webkit-transform;
-  transition-property: transform, opacity;
-  transition-property: transform, opacity, -webkit-transform;
+
   -webkit-transform: scale(0);
           transform: scale(0);
   pointer-events: none;
@@ -8927,6 +8925,9 @@ nav .categories-wrapper .categories-container .categories > li {
   transition: box-shadow 0.3s, -webkit-transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63);
   transition: transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63), box-shadow 0.3s;
   transition: transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63), box-shadow 0.3s, -webkit-transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63);
+}
+.col l4 m6 s12 .gallery-item .gallery-expand .gallery-filter {
+  max-height: 400px;
 }
 
 #placeholder-navbar {
