@@ -8,8 +8,8 @@ module.exports = function(app) {
   // GET route for getting all of the books
   app.get("/api/books", function(req, res) {
     var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
+    if (req.query.UserId) {
+      query.UserId = req.query.UserId;
     }
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
@@ -56,9 +56,10 @@ module.exports = function(app) {
   });
 
   // PUT route for updating books
-  app.put("/api/books", function(req, res) {
-    db.Book.update(
-      req.body,
+  app.put("/api/books/:id?/:isCheckedOut", function(req, res) {
+    db.Book.update({
+      checkedOut: req.params.isCheckedOut
+    },
       {
         where: {
           id: req.body.id
@@ -67,4 +68,5 @@ module.exports = function(app) {
         res.json(dbBook);
       });
   });
+
 };

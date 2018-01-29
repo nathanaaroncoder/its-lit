@@ -24,8 +24,10 @@ module.exports = function(app) {
     });
   });
 
-  app.delete("/api/users/:id", function(req, res) {
-    db.User.destroy({
+  app.put("/api/users/:id", function(req, res) {
+    db.User.update(
+      req.body,
+      {
       where: {
         id: req.params.id
       }
