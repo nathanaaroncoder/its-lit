@@ -79,15 +79,21 @@ module.exports = function(app) {
     });
   });
 
+
+
   // Get route for retrieving a single book
-  app.get("/api/books/:id", function(req, res) {
-    // Here we add an "include" property to our options in our findOne query
+ app.get("/api/books/:category", function(req, res) {
+    // var query = {};
+    // if (req.query.UserId) {
+    //   query.UserId = req.query.UserId;
+    // }
+    // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.User
-    db.Book.findOne({
-      where: {
-        id: req.params.id
-      },
+    console.log("here")
+    db.Book.findAll({
+      where: {genre: req.params.category, checkedOut:false
+    },
       include: [db.User]
     }).then(function(dbBook) {
       res.json(dbBook);

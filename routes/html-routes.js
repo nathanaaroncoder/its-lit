@@ -55,6 +55,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/profile.html"));
   });
 
+  app.get("/tinder", isAuthenticated, function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/matches.html"));
+  });
+
 
   // // cms route loads cms.html
   // app.get("/cms", function(req, res) {
