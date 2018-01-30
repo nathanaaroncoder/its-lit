@@ -16,6 +16,8 @@
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
   </head>
 
   <body>
@@ -71,10 +73,13 @@
     <div id="portfolio" class="section gray">
       <div class="container">
         <div class="gallery row">
-          <div class="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
+          <div class="col l3 m6 s12 gallery-item gallery-expand gallery-filter polygon"> <!--where polygon is, there will be a class added on top of this that takes from the array of categories
+            in the API, in order to show the user a filtered view of sub generes for their results --> 
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
-                <img class="responsive-img" src="http://placehold.it/350x250" alt="placeholder">
+                <div id= "coverSpace"> 
+
+                </div>
               </a>
               <div class="gallery-header">
                 <span>Aquamarine</span>
@@ -107,8 +112,9 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
           <div class="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
-                <img src="http://placehold.it/350x300" alt="placeholder">
-              </a>
+                  <div id= "coverSpace"> 
+
+                    </div>              </a>
               <div class="gallery-header">
                 <span>Sun</span>
               </div>
@@ -137,11 +143,9 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               </div>
             </div>
           </div>
-          <div class="col l4 m6 s12 gallery-item gallery-expand gallery-filter bigbang">
-            <div class="gallery-curve-wrapper">
-              <a class="gallery-cover gray">
-                <img class="responsive-img" src="http://placehold.it/350x280" alt="placeholder">
-              </a>
+   
+
+              <!--
               <div class="gallery-header">
                 <span>Big Bang 1</span>
               </div>
@@ -475,7 +479,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 
         </div>
 
-      </div>
+      </div> -->
     </div><!-- /.container -->
 
 
@@ -488,5 +492,47 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
     <script src="js/mat-js/galleryExpand.js"></script>
     <script src="js/mat-js/init.js"></script>
 
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+    var queryURL = "https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=" + "AIzaSyCPuyAmcaGASa9ymUw16xO4oRTaSde7fv0"
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+
+    }).done(function(response) {
+
+
+      for (var k = 0; k < 1; k++) {
+        
+        var answer = response.items;
+        var bookTitle = answer[k].volumeInfo.title;
+        var bookCategories = answer[k].volumeInfo.categories ; 
+       var bookCover = answer[k].volumeInfo.imageLinks.thumbnail;
+
+        if (bookCover) {
+          console.log("inside if");
+         console.log("answer is: " + bookTitle + " categories: " + bookCategories + " || " +
+         "pic:  " + bookCover);
+         console.log(response.items);
+           var title = $("<p>").text("title: " + bookTitle);
+          var imageTag = $("<img>");
+          var showCover = imageTag.attr("src", bookCover);
+          $("#coverSpace").append(imageTag);
+          // imageGif.css("padding", "8px");
+          // imageGif.addClass("placeholder");
+           console.log("=========================" );
+          } else {
+            console.log("book with no cover: " + answer[k].volumeInfo.title + "n/-------------" )
+            console.log("no cover found");
+          }
+        }
+          // google.books.setOnLoadCallback(initialize);
+       })
+
+  })
+    </script>
   </body>
 </html>
