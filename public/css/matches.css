@@ -1,0 +1,19 @@
+.book-image{
+    height: 500px;
+}
+
+#book-info{
+    height: 500px;
+    margin: 50px;
+    margin-top: 15px;
+    overflow: scroll;
+}
+
+#book-cover{
+    height: 500px;
+    margin: 50px;
+}
+
+.material-icons{
+    color: black;
+}
