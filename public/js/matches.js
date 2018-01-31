@@ -12,19 +12,19 @@ $(document).ready(function(){
   // and updates the HTML on the page
   $.get("/api/user_data").then(function(data) {
     // $(".member-name").text(data.email);
-    thisUserId = data.id;
+    thisUserId = data.UserId;
 
     console.log("thisUserId " + thisUserId);
 
 
   //get the user id
-    console.log("Now thisUserId " + data.id);
+    console.log("Now thisUserId " + data.UserId);
 
     $.ajax({
       method: "GET",
       url: "/api/users/" + thisUserId,
       data: {
-      UserId: thisUserId
+      UserUserId: thisUserId
       }
     }).then(function(data){
       console.log(data);
@@ -119,7 +119,7 @@ $(document).ready(function(){
             dataStorage = data;
             console.log("dataLen: " + dataLen)
 
-            findNewBook(dataStorage[tempIndex].title);
+            findNewBook(dataStorage[tempIndex]);
 
             
 
@@ -142,7 +142,33 @@ $(document).ready(function(){
 
 
 
-    function findNewBook(title){
+    function findNewBook(bookData){
+        console.log("TITLE");
+        console.log(bookData.title);
+        var thisTitle = bookData.title.split(" ");
+        thisTitle = thisTitle.join("");
+        if (thisTitle.indexOf(".") > -1){
+            thisTitle = thisTitle.split(".");
+            thisTitle = thisTitle.join("");
+        }
+        if (thisTitle.indexOf("'") > -1){
+            thisTitle = thisTitle.split("'");
+            thisTitle = thisTitle.join("");
+        }
+        console.log("thisTitle: " + thisTitle);
+        console.log("AUTHOR");
+        console.log(bookData.author);
+        var thisAuthor = bookData.author.split(" ");
+        thisAuthor = thisAuthor.join("");
+        if (thisAuthor.indexOf(".") > -1){
+            thisAuthor = thisAuthor.split(".");
+            thisAuthor = thisAuthor.join("");
+        }
+        if (thisAuthor.indexOf("'") > -1){
+            thisAuthor = thisAuthor.split("'");
+            thisAuthor = thisAuthor.join("");
+        }
+        console.log("thisTitle: " + thisAuthor);
 
 
         $("#book-cover").empty();
@@ -150,7 +176,7 @@ $(document).ready(function(){
 
         $.ajax({
             method: "GET",
-            url: "https://www.googleapis.com/books/v1/volumes?q=" + title + "&key=AIzaSyCeH0ntzIH5qUGfnIumk6woxDQp7mRZDlA"
+            url: "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&key=AIzaSyCeH0ntzIH5qUGfnIumk6woxDQp7mRZDlA"
           }).then(function(data){
               console.log(data.items[0].id);
                var gBookId = data.items[0].id;
@@ -162,10 +188,15 @@ $(document).ready(function(){
                   console.log(data.volumeInfo);
                    var bookInfo = data.volumeInfo;
                 
-                var bookImg = $("<img>");
-                bookImg.attr("src", bookInfo.imageLinks.large);
-                bookImg.addClass("book-image")
-    
+                    var bookImg = $("<img>");
+
+                if (bookInfo.imageLinks.large){
+                    bookImg.attr("src", bookInfo.imageLinks.large);  
+                } else {
+                    bookImg.attr("src", bookInfo.imageLinks.thumbnail);
+                }
+                
+                bookImg.addClass("book-image");
                 $("#book-cover").prepend(bookImg);
 
                 var bookTitle = $("<h5>");
@@ -201,22 +232,26 @@ $(document).ready(function(){
 
     }
 
-// findNewBook();
+
 
 
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
 $('#modal1').modal();
 
-$(document).on("click", "#like", function(){
+$(document).on("click", "#lit", function(){
 		if (tempIndex < dataLen){ 
-    	findNewBook(dataStorage[tempIndex].title);
+    	findNewBook(dataStorage[tempIndex]);
+  } else {
+      alert("Those are all the books with genres you like!");
   }
 });
 
 $(document).on("click", "#dislike", function(){
     if (tempIndex < dataLen){ 
-    	findNewBook(dataStorage[tempIndex].title);
-  }
+    	findNewBook(dataStorage[tempIndex]);
+  } else {
+    alert("Those are all the books with genres you like!");
+}
 });
 
 });
