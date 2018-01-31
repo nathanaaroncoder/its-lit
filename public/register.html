@@ -185,17 +185,17 @@
 		<div class="row center-align">
 			<div class="offset-s1 col s3 iconBox">
 				<i class="fa fa-user-secret fa-4x aniIcon" aria-hidden="true"></i>
-				<h5>Mystery</h5>
+				<h5 class="genre">Mystery</h5>
 				<p>Can't resist a good "Whodunit"</p>
 			</div>
 			<div class="col s3 iconBox">
 				<i class="fa fa-eye fa-4x aniIcon" aria-hidden="true"></i>
-				<h5>Horror</h5>
+				<h5 class="genre">Horror</h5>
 				<p>Has a secret love for what goes "bump" in the night</p>
 			</div>
 			<div class="col s3 iconBox">
 				<i class="fa fa-users fa-4x aniIcon" aria-hidden="true"></i>
-				<h5>Young Adult</h5>
+				<h5 class="genre">Young Adult</h5>
 				<p>For those young and young at heart</p>
 			</div>
 		</div>
@@ -203,23 +203,18 @@
 		<div class="row center-align">
 			<div class="offset-s1 col s3 iconBox">
 				<i class="fa fa-magic fa-4x aniIcon" aria-hidden="true"></i>
-				<h5>Fantasy</h5>
+				<h5 class="genre">Fantasy</h5>
 				<p>Never outgrew those childhood fairy-tales</p>
 			</div>
 			<div class="col s3 iconBox">
 				<i class="fa fa-compass fa-4x aniIcon" aria-hidden="true"></i>
-				<h5>Action/Adventure</h5>
+				<h5 class="genre">Action/Adventure</h5>
 				<p>Your heart longs for the Wild Blue Yonder</p>
 			</div>
 			<div class="col s3 iconBox">
 				<i class="fa fa-university fa-4x aniIcon" aria-hidden="true"></i>
-				<h5>Classic</h5>
+				<h5 class="genre">Classic</h5>
 				<p>Loves to party Old-School</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="offset-s9 col s3">
-				<a class="btn waves-effect white grey-text darken-text-2 submitBtn" id="updateGen">Submit</a>
 			</div>
 		</div>
     </div>
@@ -254,10 +249,20 @@
 	});
 
 
-	// $(".iconBox").on("click", function () {
-	// 	// var changedGenre = $(this)
-	// 	console.log((this).("<h5>").textContent)
-	// })
+
+	$(".iconBox").on("click", function () {
+		//use conditional if the tile clicked on is action/adventure or Young Adult//
+
+		var changedGenre = $(this).find("h5").text().toLowerCase();
+
+		$.ajax(`/api/users/${userId}/${changedGenre}`, {
+			type: "PUT",
+		}).then(function(data) {
+			console.log("Genre Changed!")
+		
+	})
+
+	})	
 
 	$("#updateGen").on("click", function () {
 
@@ -293,7 +298,7 @@
 			type: "POST",
 			data: newProfile,
 		}).then(function(data) {
-			console.log("Hi")
+			console.log("User Submitted")
 	})
 	})
 		
@@ -332,7 +337,7 @@
 			type: "POST",
 			data: bookList[i],
 		}).then(function(data) {
-			console.log("Hi")
+			console.log("Book Submitted")
 			console.log(data);
 		});
 		}	
