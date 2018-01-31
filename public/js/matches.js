@@ -4,6 +4,10 @@ $(document).ready(function(){
     var thisUserId;
 
   var userPreferences = [];
+
+  var dataLen;
+  var dataStorage;
+  var tempIndex = 0;
     // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function(data) {
@@ -46,6 +50,32 @@ $(document).ready(function(){
 
       console.log("user preferences " + userPreferences);
 
+
+
+    //    $.ajax({
+    //   method: "GET",
+    //   url: "/api/books/",
+          	
+    //   }).then(function(data){
+    //   console.log(data);
+    //   for (var i = 0; i < userPreferences.length; i++) {
+
+    //   	console.log(userPreferences.indexOf("horror"))
+
+    //   	// if the book's genre is in the userPref array
+    //   	if (userPreferences.indexOf(data[i].genre) >=0 )
+    //   	{
+    //   		displayArr.push(data[i])
+    //   		console.log("displayArr below")
+    //   		console.log(displayArr)
+    //   		console.log(displayArr[0])
+
+    //   		console.log(JSON.stringify(displayArr, null, 2))
+    //   	}
+    //   }
+
+    // })
+
       if (userPreferences.length <= 0){
 
       $.ajax({
@@ -64,10 +94,18 @@ $(document).ready(function(){
     	var randomNum = Math.floor(Math.random() * userPreferences.length);
 
     	var randomCategory = userPreferences[randomNum];
+   		console.log("random category: " + randomCategory)
+
+   		var queryUrl = "/api/books/" + thisUserId + "/";
+
+   		for (var i = 0; i < userPreferences.length; i++) {
+   			queryUrl += userPreferences[i] + "/"
+   		}
 
     	 $.ajax({
       method: "GET",
-      url: "api/books/" + randomCategory,
+      url: queryUrl,
+      data: {id: thisUserId}
       
     	
       }).then(function(data){
@@ -77,8 +115,13 @@ $(document).ready(function(){
 
             console.log(data[0].title);
 
-            findNewBook(data[0].title);
+            dataLen = data.length;
+            dataStorage = data;
+            console.log("dataLen: " + dataLen)
 
+            findNewBook(dataStorage[tempIndex].title);
+
+            
 
     })
 
@@ -145,13 +188,14 @@ $(document).ready(function(){
                 var bookDescripHead = $("<h5>");
                 bookDescripHead.text("Description:");
                 var bookDescrip = $("<p>");
-                bookDescrip.text(bookInfo.description);
+                bookDescrip.html(bookInfo.description);
                 descripDiv.append(bookDescripHead);
                 descripDiv.append(bookDescrip);
                 descripDiv.append("<br><br>");
                 $("#book-info").append(descripDiv);
                    
-                
+
+                tempIndex++;
                 });
       });
 
@@ -164,11 +208,15 @@ $(document).ready(function(){
 $('#modal1').modal();
 
 $(document).on("click", "#like", function(){
-    findNewBook();
+		if (tempIndex < dataLen){ 
+    	findNewBook(dataStorage[tempIndex].title);
+  }
 });
 
 $(document).on("click", "#dislike", function(){
-    findNewBook();
+    if (tempIndex < dataLen){ 
+    	findNewBook(dataStorage[tempIndex].title);
+  }
 });
 
 });

@@ -7,6 +7,7 @@ var passport = require("../config/passport");
 module.exports = function(app) {
 
 
+
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -82,7 +83,7 @@ module.exports = function(app) {
 
 
   // Get route for retrieving a single book
- app.get("/api/books/:category", function(req, res) {
+ app.get("/api/books/:userid/:category/:category2?/:category3?/:category4?/:category5?/:category6?/", function(req, res) {
     // var query = {};
     // if (req.query.UserId) {
     //   query.UserId = req.query.UserId;
@@ -91,8 +92,17 @@ module.exports = function(app) {
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.User
     console.log("here")
+    // console.log( " req.body.id below")
+    // console.log(req.body.id)
+    // console.log(" req.data.id below")
+    // console.log(req.data.id)
     db.Book.findAll({
-      where: {genre: req.params.category, checkedOut:false
+      where: { checkedOut:false, UserId: {$ne: req.params.userid},
+       $or: [{genre: {$eq: req.params.category} }, { genre: {$eq: req.params.category2}},
+       { genre: {$eq: req.params.category3}}, { genre: {$eq: req.params.category4}}, 
+       { genre: {$eq: req.params.category5}}, { genre: {$eq: req.params.category6}  }]
+       // ,[{UserId: {$ne: req.body.id}}]
+    
     },
       include: [db.User]
     }).then(function(dbBook) {
