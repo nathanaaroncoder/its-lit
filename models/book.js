@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
       // A Book can't be created without User due to the foreign key constraint
       Book.belongsTo(models.User, {
         foreignKey: {
-          allowNull: false
+          allowNull: false,
         }
       });
     };

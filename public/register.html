@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Register</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Rammetto+One" rel="stylesheet">
+	<script src="https://use.fontawesome.com/227ddb778d.js"></script>
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</head>
+
+<style type="text/css">
+	#regHeader {
+		top: 0px;
+	}
+
+	.onNow {
+		margin: 0 2px;
+		width: 30px;
+		height: 30px;
+		background-color: #337ab7;
+	}
+
+	#shift {
+		margin-top: 80px;
+	}
+	.iconBox {
+		height: 210px;
+		padding-top: 33px;
+		margin-top: 50px;
+		border-style: solid;
+		background-color: white;
+		padding-top: 26px !important;
+	}
+
+	.row {
+		height: 77px;
+	}
+
+	.btn {
+		margin-top: 10px;
+	}
+
+	.resize {
+		height: 100%; 
+		position:absolute!important; 
+		width: 100%;
+	}
+
+	.aniIcon:hover {
+    transform: translateY(-10px);
+	}
+
+	h5 {
+		font-family: 'Rammetto One', cursive;
+	}
+
+	p {
+		font-family: 'Open Sans', sans-serif;
+	}
+</style>
+<body>
+
+  <div class="amber black-text resize" id="formOne" href="#one!"  style="z-index: 4">
+		<div class="row">
+			<h5 class="center-align">First, We'll Need the Basics: </h5>
+			<form class="offset-s3 col s6">
+				<div class="row">
+						<div class="input-field col s6">
+						<input id="name" type="text" class="validate">
+						<label for="name">Name</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="city" type="text" class="validate">
+						<label for="city">City</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="state" type="text" class="validate">
+						<label for="state">State</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="password" type="password" class="validate">
+						<label for="password">Password</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="email" type="email" class="validate">
+						<label for="email">Email</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="offset-s9 col s3">
+						<a class="btn waves-effect white grey-text darken-text-2 submitBtn" id="userSubmit">Submit</a>
+					</div>
+				</div>
+			</form>
+		</div>
+    </div>
+
+     <div class="amber black-text resize" id="formTwo" href="#two!" style="z-index: 3">
+		<div class="row" >
+			<form class="offset-s3 col s7">
+				<div class="row">
+					<div class="col s12">
+						<h5 class="center-align">What Books Can You Lend?</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s4">
+						<input id="title1" type="text" class="validate">
+						<label for="title1">Insert Title</label>
+					</div>
+					<div class="input-field col s4">
+						<input id="author1" type="text" class="validate">
+						<label for="author1">Insert Author</label>
+					</div>
+					<div class=" input-field col s4">
+						<select id="dropdown1">
+							<option value="" disabled selected>Where's Your Book Best Fit?</option>
+							<option value="Horror">Horror</option>
+							<option value="Mystery">Mystery</option>
+							<option value="Action/Adventure">Action/Adventure</option>
+							<option value="Fantasy">Fantasy</option>
+							<option value="Classic">Classic</option>
+						</select>
+						<label>Genre</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s4">
+						<input id="title2" type="text" class="validate">
+						<label for="title2">Insert Title</label>
+					</div>
+					<div class="input-field col s4">
+						<input id="author2" type="text" class="validate">
+						<label for="author2">Insert Author</label>
+					</div>
+					<div class="input-field col s4">
+						<select id="dropdown2">
+							<option value="" disabled selected>Where's Your Book Best Fit?</option>
+							<option value="Horror">Horror</option>
+							<option value="Mystery">Mystery</option>
+							<option value="Action/Adventure">Action/Adventure</option>
+							<option value="Fantasy">Fantasy</option>
+							<option value="Classic">Classic</option>
+						</select>
+						<label>Genre</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s4">
+						<input id="title3" type="text" class="validate">
+						<label for="title3">Insert Title</label>
+					</div>
+					<div class="input-field col s4">
+						<input id="author3" type="text" class="validate">
+						<label for="author3">Insert Author</label>
+					</div>
+					<div class="input-field col s4">
+						<select id="dropdown3">
+							<option value="" disabled selected>Where's Your Book Best Fit?</option>
+							<option value="Horror">Horror</option>
+							<option value="Mystery">Mystery</option>
+							<option value="Action/Adventure">Action/Adventure</option>
+							<option value="Fantasy">Fantasy</option>
+							<option value="Classic">Classic</option>
+						</select>
+						<label>Genre</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="offset-s9 col s3">
+						<a class="btn waves-effect white grey-text darken-text-2 submitBtn" id="bookSubmit">Submit</a>
+					</div>
+				</div>
+			</form>
+		</div>
+    </div>
+     <div class="amber black-text resize" href="#three!"  style="z-index: 2">
+		<div class="row center-align">
+			<div class="offset-s1 col s3 iconBox">
+				<i class="fa fa-user-secret fa-4x aniIcon" aria-hidden="true"></i>
+				<h5>Mystery</h5>
+				<p>Can't resist a good "Whodunit"</p>
+			</div>
+			<div class="col s3 iconBox">
+				<i class="fa fa-eye fa-4x aniIcon" aria-hidden="true"></i>
+				<h5>Horror</h5>
+				<p>Has a secret love for what goes "bump" in the night</p>
+			</div>
+			<div class="col s3 iconBox">
+				<i class="fa fa-users fa-4x aniIcon" aria-hidden="true"></i>
+				<h5>Young Adult</h5>
+				<p>For those young and young at heart</p>
+			</div>
+		</div>
+		<div class="row"></div>
+		<div class="row center-align">
+			<div class="offset-s1 col s3 iconBox">
+				<i class="fa fa-magic fa-4x aniIcon" aria-hidden="true"></i>
+				<h5>Fantasy</h5>
+				<p>Never outgrew those childhood fairy-tales</p>
+			</div>
+			<div class="col s3 iconBox">
+				<i class="fa fa-compass fa-4x aniIcon" aria-hidden="true"></i>
+				<h5>Action/Adventure</h5>
+				<p>Your heart longs for the Wild Blue Yonder</p>
+			</div>
+			<div class="col s3 iconBox">
+				<i class="fa fa-university fa-4x aniIcon" aria-hidden="true"></i>
+				<h5>Classic</h5>
+				<p>Loves to party Old-School</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="offset-s9 col s3">
+				<a class="btn waves-effect white grey-text darken-text-2 submitBtn" id="updateGen">Submit</a>
+			</div>
+		</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+ 	var userId = moment().format("x").toString();
+	var formOne = $("#formOne");
+	var visible = true;
+
+	var formTwo = $("#formTwo");
+	formTwo.hide();
+	
+	function formProgress() {
+		if (visible === false) {
+			formTwo.hide();
+			return;
+		}
+		if (visible === true) {
+			formTwo.show();
+			formOne.hide();
+			visible = false;
+			return;
+		}
+	}
+
+	$('select').material_select();
+
+	$(".submitBtn").on("click", function() {		
+		formProgress();
+	});
+
+
+	$(".iconBox").on("click", function () {
+		// var changedGenre = $(this)
+		console.log((this).("<h5>").textContent)
+	})
+
+	$("#updateGen").on("click", function () {
+
+		var newProfile = {
+		name: $("#name").val().trim(),
+		city: $("#city").val().trim(),	
+		state: $("#state").val().trim(),
+		password: $("#password").val().trim(),
+		email: $("#email").val().trim(),
+		UserId: userId
+		}
+
+			$.ajax("/api/users", {
+			type: "POST",
+			data: newProfile,
+		}).then(function(data) {
+			console.log("Hi")
+	})
+	})
+
+
+	$("#userSubmit").on("click", function () {
+		var newProfile = {
+		name: $("#name").val().trim(),
+		city: $("#city").val().trim(),	
+		state: $("#state").val().trim(),
+		password: $("#password").val().trim(),
+		email: $("#email").val().trim(),
+		UserId: userId
+		}
+
+			$.ajax("/api/users", {
+			type: "POST",
+			data: newProfile,
+		}).then(function(data) {
+			console.log("Hi")
+	})
+	})
+		
+	$("#bookSubmit").on("click", function () {
+			$.ajax("/api/user_data", {
+			type: "GET"
+		}).then(function(data) {
+		
+		console.log("Hi")})
+		var firstBook = {
+			title: $("#title1").val().trim(),
+			author: $("#author1").val().trim(),
+			genre: $( "select#dropdown1 option:checked" ).val(),
+			UserUserId: userId
+
+		}
+
+		var secondBook = {
+			title: $("#title2").val().trim(),
+			author: $("#author2").val().trim(),
+			genre: $( "select#dropdown2 option:checked" ).val(),
+			UserUserId: userId 
+		}
+
+		var thirdBook = {
+			title: $("#title3").val().trim(),
+			author: $("#author3").val().trim(),
+			genre: $( "select#dropdown3 option:checked" ).val(),
+			UserUserId: userId			
+		}
+
+		var bookList = [firstBook, secondBook, thirdBook];
+
+		for (var i = 0; i < bookList.length; i++) {
+			$.ajax("/api/books", {
+			type: "POST",
+			data: bookList[i],
+		}).then(function(data) {
+			console.log("Hi")
+			console.log(data);
+		});
+		}	
+		});
+		
+
+
+	})
+
+ //    $.ajax("/new",{
+ //      type: "POST",
+ //      data: newBurger,
+ //    }).then(function(data){
+ //        getBurgers();
+ //        location.reload();
+
+ //    });
+  
+
+</script>
+
+</body>
+</html>
