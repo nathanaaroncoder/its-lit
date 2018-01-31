@@ -29,7 +29,7 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("/profile");
     }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.sendFile(path.join(__dirname, "../public/landing.html"));
   });
  
 
@@ -44,7 +44,7 @@ module.exports = function(app) {
    app.get("/register", function(req, res) {
     // If the user already has an account send them to the profile page
     if (req.user) {
-      res.redirect("/profile");
+      res.redirect("/matches");
     }
     res.sendFile(path.join(__dirname, "../public/register.html"));
   });
@@ -55,7 +55,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/profile.html"));
   });
 
-  app.get("/tinder", isAuthenticated, function(req, res) {
+  app.get("/matches", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/matches.html"));
   });
 

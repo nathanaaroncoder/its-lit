@@ -15,7 +15,7 @@ module.exports = function(app) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.json("/profile");
+    res.json("/matches");
   });
 
 
@@ -63,7 +63,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        UserId: req.user.UserId
       });
     }
   });
@@ -74,8 +74,9 @@ module.exports = function(app) {
   // GET route for getting all of the books
   app.get("/api/books", function(req, res) {
     var query = {};
-    if (req.query.UserId) {
-      query.UserId = req.query.UserId;
+    if (req.query.UserUserId) {
+      console.log(req.query)
+      query.UserUserId = req.query.UserUserId;
     }
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
