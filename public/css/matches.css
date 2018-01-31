@@ -15,5 +15,18 @@
 }
 
 .material-icons{
-    color: blueviolet;
+    color: white;
+}
+
+#thumbs-up, #thumbs-down, #lightbulb{
+    color: #ec6f75;
+}
+
+#modal-h3{
+    text-align: center;
+}
+
+#modal1{
+    background-color: #ec6f75;
+    color: white;
 }
