@@ -4,6 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <title>It's Lit - Profile</title>
+
+  <!-- Lato Font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Stylesheet -->
+    <link href="css/mat-css/gallery-materialize.css" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">  
   <!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
@@ -14,16 +24,30 @@
 
 <body>
 
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
+  <!-- Navbar and Header -->
+  <nav class="nav-extended">
+    <div class="nav-background">
+      <div class="pattern active" style="background-image: url('images/introbooks.jpeg');"></div>
+    </div>
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo"><i class="material-icons">camera</i>It's Lit</a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="main.html">Main</a></li>
-        <li class="active"><a href="profile.html">Profile</a></li>
-        <li><a class="navbar-brand" href="/logout">Logout</a></li>
+       
+        <li><a class='dropdown-button' href='#' data-activates='feature-dropdown' data-belowOrigin="true" data-constrainWidth="false">User Account<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
+      <!-- Dropdown Structure -->
+      <ul id='feature-dropdown' class='dropdown-content'>
+        <li><a href="/results">All Books</a></li>
+        <li><a href="/matches">Matches</a></li>
+        <li><a href="/logout">Logout</a></li>
+
+      </ul>
+
+      
     </div>
   </nav>
+
 
   <div class="container">
     <div class="row">
