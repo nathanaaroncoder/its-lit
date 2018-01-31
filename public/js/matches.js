@@ -85,6 +85,12 @@ $(document).ready(function(){
       }).then(function(data){
       console.log(data);
 
+      dataLen = data.length;
+     dataStorage = data;
+     console.log("dataLen: " + dataLen)
+
+     findNewBook(dataStorage[tempIndex]);
+
     })
 
     }
