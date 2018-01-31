@@ -59,6 +59,9 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/matches.html"));
   });
 
+  app.get("/results", isAuthenticated, function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/results.html"));
+  });
 
   // // cms route loads cms.html
   // app.get("/cms", function(req, res) {
