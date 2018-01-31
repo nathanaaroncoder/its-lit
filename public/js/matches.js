@@ -161,6 +161,7 @@ $(document).ready(function(){
             thisTitle = thisTitle.split("'");
             thisTitle = thisTitle.join("");
         }
+        thisTitle = thisTitle.toLowerCase();
         console.log("thisTitle: " + thisTitle);
         console.log("AUTHOR");
         console.log(bookData.author);
@@ -174,7 +175,8 @@ $(document).ready(function(){
             thisAuthor = thisAuthor.split("'");
             thisAuthor = thisAuthor.join("");
         }
-        console.log("thisTitle: " + thisAuthor);
+        thisAuthor = thisAuthor.toLowerCase();
+        console.log("thisAuthor: " + thisAuthor);
 
 
         $("#book-cover").empty();
