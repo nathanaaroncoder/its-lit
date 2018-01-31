@@ -18,11 +18,11 @@ $(document).ready(function() {
 
     console.log("thisUserId " + thisUserId);
 
-    var bookId = $(".button-borrow").attr("data-bookId", dataUserId);
+    var bookId = $(".button-borrow").attr("data-bookId", thisUserId);
 
   //get the user id
   // var test = JSON.stringify(elisheva, null, 2)
-    console.log("Now thisUserId " + dataUserId);
+    console.log("Now thisUserId " + thisUserId);
 
     $.ajax({
       method: "GET",

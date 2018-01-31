@@ -47,24 +47,25 @@
       </div>
 </nav>
 
+
 <div class="container">
 <div id="sign-in" style="margin: 30px; width: 100%;">
 
         <div class="row">
-               
+               <form class="login">
                   <div class="row">
-                        <label for="first_name">First Name</label>
-                      <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                        <label for="email">Email</label>
+                      <input placeholder="email" id="email-input" type="text" class="validate">
                  </div>
                    
                   <div class="row">
                     <label for="password">Password</label>
-                      <input id="password" type="password" class="validate">
+                      <input id="password-input" type="password" class="validate">
                   
                   </div>
                   <div class="row" style="text-align: center">
                      
-                  <a class="waves-effect waves-light btn">Sign-in</a>  <a class="waves-effect waves-light btn">Register</a>
+                  <button type="submit" class="waves-effect waves-light btn">Sign-in</button>  <a class="waves-effect waves-light btn" href="/register">Register</a>
 
             <!--1 - IF Not logged in, do not show navigation 
                 2- Else, display navigation
@@ -73,6 +74,8 @@
                 **refer to last in class activity for details
             --> 
               </div>
+
+            </form>
         </div>
     </div>
     </div><!-- /.container -->
@@ -86,6 +89,49 @@
     <script src="js/mat-js/color-thief.min.js"></script>
     <script src="js/mat-js/galleryExpand.js"></script>
     <script src="js/mat-js/init.js"></script>
+
+    <script>
+  
+  $(document).ready(function() {
+  // Getting references to our form and inputs
+  var loginForm = $("form.login");
+  var emailInput = $("input#email-input");
+  var passwordInput = $("input#password-input");
+
+  // When the form is submitted, we validate there's an email and password entered
+  loginForm.on("submit", function(event) {
+    event.preventDefault();
+    var userData = {
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
+    };
+
+    if (!userData.email || !userData.password) {
+      return;
+    }
+
+    // If we have an email and password we run the loginUser function and clear the form
+    loginUser(userData.email, userData.password);
+    emailInput.val("");
+    passwordInput.val("");
+  });
+
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+  function loginUser(email, password) {
+    $.post("/api/login", {
+      email: email,
+      password: password
+    }).then(function(data) {
+      window.location.replace(data);
+      // If there's an error, log the error
+    }).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+});
+
+    </script>
 
   </body>
 </html>
