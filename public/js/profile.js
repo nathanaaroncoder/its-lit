@@ -14,21 +14,21 @@ $(document).ready(function() {
   // and updates the HTML on the page
   $.get("/api/user_data").then(function(data) {
     // $(".member-name").text(data.email);
-    thisUserId = data.id;
+    thisUserId = data.UserId;
 
     console.log("thisUserId " + thisUserId);
 
-    var bookId = $(".button-borrow").attr("data-bookId", data.id);
+    var bookId = $(".button-borrow").attr("data-bookId", dataUserId);
 
   //get the user id
   // var test = JSON.stringify(elisheva, null, 2)
-    console.log("Now thisUserId " + data.id);
+    console.log("Now thisUserId " + dataUserId);
 
     $.ajax({
       method: "GET",
       url: "/api/books",
       data: {
-      UserId: thisUserId
+      UserUserId: thisUserId
       }
     }).then(function(data){
       console.log(data);
