@@ -29,4 +29,6 @@
 #modal1{
     background-color: #ec6f75;
     color: white;
+    background-image: linear-gradient(rgb(236,111,117), rgba(0, 0, 0, 0.6)), url(../images/bg.jpeg);
+    background-size: 900px;
 }
