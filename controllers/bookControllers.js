@@ -91,20 +91,11 @@ module.exports = function(app) {
 
 
 
-  // Get route for retrieving a single book
+  // Get route for retrieving books that match user's preferences,
+  //are checked in, and don't belong to them
  app.get("/api/books/:userid/:category/:category2?/:category3?/:category4?/:category5?/:category6?/", function(req, res) {
-    // var query = {};
-    // if (req.query.UserId) {
-    //   query.UserId = req.query.UserId;
-    // }
-    // Here we add an "include" property to our options in our findAll query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.User
+    
     console.log("here")
-    // console.log( " req.body.id below")
-    // console.log(req.body.id)
-    // console.log(" req.data.id below")
-    // console.log(req.data.id)
     db.Book.findAll({
       where: { checkedOut:false, UserUserId: {$ne: req.params.userid},
        $or: [{genre: {$eq: req.params.category} }, { genre: {$eq: req.params.category2}},

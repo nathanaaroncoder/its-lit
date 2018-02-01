@@ -332,7 +332,7 @@
 			data: newProfile,
 		}).then(function(data) {
 			console.log("Hi")
-	})
+		})
 	})
 
 
@@ -389,6 +389,8 @@ function loginUser(email, password) {
 			}).then(function(data) {
 				console.log("User Submitted")})
 		})
+
+
 		
 	$("#bookSubmit").on("click", function () {
 		$.ajax("/api/user_data", {
@@ -418,6 +420,8 @@ function loginUser(email, password) {
 			UserUserId: userId			
 		}
 
+		var apiPicLink;
+		var apiDescription;
 		var bookList = [];
 		console.log("FIRST BOOK BELOW:")
 		console.log(firstBook);
@@ -441,21 +445,120 @@ function loginUser(email, password) {
 			console.log(bookList); 
 		}
 	
-
 		for (var i = 0; i < bookList.length; i++) {
-			$.ajax("/api/books", {
-			type: "POST",
-			data: bookList[i],
-		}).then(function(data) {
-			console.log("Book Submitted")
-			console.log(data);})
-		}	
 
-		});
+			findBookApiInfo(bookList[i])
+			
+		}
+
+		// for (var i = 0; i < bookList.length; i++) {
+		// 	$.ajax("/api/books", {
+		// 	type: "POST",
+		// 	data: bookList[i],
+		// }).then(function(data) {
+		// 	console.log("Book Submitted")
+		// 	console.log(data);})
+		// }	
+
+		}); //close book submit
+
+// we do this function so we don't have to keep going back to the googleBooksAPI each time we want to display a book cover
+	function findBookApiInfo(bookObj){
+	  console.log("TITLE");
+	  console.log(bookObj.title);
+
+	  // removing characters and spaces from the title and switch to lower case
+	  var thisTitle = bookObj.title.split(" ");
+	  thisTitle = thisTitle.join("");
+	  if (thisTitle.indexOf(".") > -1){
+	      thisTitle = thisTitle.split(".");
+	      thisTitle = thisTitle.join("");
+	  }
+	  if (thisTitle.indexOf("'") > -1){
+	      thisTitle = thisTitle.split("'");
+	      thisTitle = thisTitle.join("");
+	  }
+	  thisTitle = thisTitle.toLowerCase();
+	  console.log("thisTitle: " + thisTitle);
+
+
+	  console.log("AUTHOR");
+	  console.log(bookObj.author);
+	  // removing characters and spaces from the author
+	  var thisAuthor = bookObj.author.split(" ");
+	  thisAuthor = thisAuthor.join("");
+	  if (thisAuthor.indexOf(".") > -1){
+	      thisAuthor = thisAuthor.split(".");
+	      thisAuthor = thisAuthor.join("");
+	  }
+	  if (thisAuthor.indexOf("'") > -1){
+	      thisAuthor = thisAuthor.split("'");
+	      thisAuthor = thisAuthor.join("");
+	  }
+	  thisAuthor = thisAuthor.toLowerCase();
+	  console.log("thisAuthor: " + thisAuthor);
+
+
+	  // $("#book-cover").empty();
+	  // $("#book-info").empty();
+
+	  // APi ajax call to get the api bookId
+	  $.ajax({
+	     method: "GET",
+	    url: "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&filter=ebooks&key=AIzaSyCeH0ntzIH5qUGfnIumk6woxDQp7mRZDlA"
+	   }).then(function(data){
+	    console.log(data.items[0].id);
+	    var gBookId = data.items[0].id;
+
+	    // using the bookId do another API ajax call to get the cover and description
+	    $.ajax({
+        method: "GET",
+        url: "https://www.googleapis.com/books/v1/volumes/" + gBookId
+      }).then(function(data){
+          console.log(data.volumeInfo);
+           var bookInfo = data.volumeInfo;
+
+        // take the large picture if it exists
+        if (bookInfo.imageLinks.large){
+        		apiPicLink = bookInfo.imageLinks.large
+        		console.log("apiPicLink " + apiPicLink)
+        		bookObj.picLink = apiPicLink;
+        } 
+        // otherwise take the thumbnail
+        else {
+        	apiPicLink = bookInfo.imageLinks.thumbnail
+        	console.log("apiPicLink " + apiPicLink)
+        	bookObj.picLink = apiPicLink;
+        }
+
+        apiDescription = bookInfo.description;
+        console.log("apiDescription", apiDescription);
+        bookObj.description = apiDescription;
+        // bookDescrip.html(bookInfo.description);
+
+        console.log("bookObj down here")
+        console.log(bookObj)
+
+        // now - post the book obj (which includes the link and description to our database)
+
+        $.ajax("/api/books", {
+					type: "POST",
+					data: bookObj,
+				}).then(function(data) {
+					console.log("Book Submitted")
+					console.log(data);
+				});
+	          
+	          
+	          });
+      });
+
+    }
+
+	});
 		
 
 
-	})
 
  
 
