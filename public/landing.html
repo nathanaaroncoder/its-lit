@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -16,131 +17,130 @@
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  </head>
+</head>
 
-  <body>
+<body>
 
     <!-- Navbar and Header -->
     <nav class="nav-extended">
-      <div class="nav-background">
-        <div class="pattern active" style="background-image: url('images/introbooks.jpeg');"></div>
-      </div>
-      <div class="nav-wrapper container">
-        <a href="index.html" class="brand-logo"><i class="material-icons">camera</i>It's Lit</a>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-         
-          <li><a class='dropdown-button' href='#' data-activates='feature-dropdown' data-belowOrigin="true" data-constrainWidth="false">User Account<i class="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
-        <!-- Dropdown Structure -->
-        <ul id='feature-dropdown' class='dropdown-content'>
-          <li><a href="horizontal.html">Settings</a></li>
-          <li><a href="full-header.html">See Favorites</a></li>
-          <li><a href="horizontal.html">Books You Own</a></li>
-
-        </ul>
-
-        <div class="nav-header center">
-          <h1>How does it work?</h1>
-         <h5> Sign up with your e-mail, town and what books you have and want to borrow. From there, you'll have access to books in your area that are ready to be borrowed! Once you've returned the book, you're lit.</h5>
+        <div class="nav-background">
+            <div class="pattern active" style="background-image: url('images/introbooks.jpeg');"></div>
         </div>
-      </div>
+        <div class="nav-wrapper container">
+            <a href="landing.html"> <img src="images/itslit1.png" style="max-width: 30%; padding: 10px;"></a>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+
+                <li><a class='dropdown-button' href='#' data-activates='feature-dropdown' data-belowOrigin="true" data-constrainWidth="false">User Account<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+            <!-- Dropdown Structure -->
+            <ul id='feature-dropdown' class='dropdown-content'>
+                <li><a href="horizontal.html">Settings</a></li>
+                <li><a href="full-header.html">See Favorites</a></li>
+                <li><a href="horizontal.html">Books You Own</a></li>
+
+            </ul>
+            <div class="nav-header center">
+                <h1>How does it work?</h1>
+                <h5> Sign up with your e-mail, town and what books you have and want to borrow. From there, you'll have access to books in your area that are ready to be borrowed! Once you've returned the book, you're lit.</h5>
+            </div>
+        </div>
     </nav>
 
 
     <div class="container">
-      <div id="sign-in" style="margin: 30px; width: 100%;">
+        <div id="sign-in" style="margin: 30px; width: 100%;">
 
-        
-        <form class="login">
-          <div class="row">
 
-            <div class="input-field">
-              <input id="email-input" type="text" class="validate">
-              <label for="email">Email</label>
-            </div>
+            <form class="login">
+                <div class="row">
 
-          </div>
-                   
-          <div class="row">
-            <div class="input-field">
-              <input id="password-input" type="password" class="validate">
-              <label for="password">Password</label>
+                    <div class="input-field">
+                        <input id="email-input" type="text" class="validate">
+                        <label for="email">Email</label>
+                    </div>
 
-            </div>
-                  
-                  
-          </div>
+                </div>
 
-          <div class="row" style="text-align: center">
-            <button type="submit" class="waves-effect waves-light btn">Sign-in</button>
-            <a class="waves-effect waves-light btn" href="/register">Register</a>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="password-input" type="password" class="validate">
+                        <label for="password">Password</label>
 
-            <!--1 - IF Not logged in, do not show navigation 
+                    </div>
+
+
+                </div>
+
+                <div class="row" style="text-align: center">
+                    <button type="submit" class="waves-effect waves-light btn">Sign-in</button>
+                    <a class="waves-effect waves-light btn" href="/register">Register</a>
+
+                    <!--1 - IF Not logged in, do not show navigation 
                 2- Else, display navigation
                 3 - for entering fields: create a for loop that goes through the data of users in the database and checks if it is there. If it is: show user's account
                 page and then display the navigation. Else: add text to the html telling that the user needs to correct information and prevent them from going to another page
                 **refer to last in class activity for details
-            --> 
-          </div>
+            -->
+                </div>
 
-        </form>
-      
-      </div>
-    </div><!-- /.container -->
+            </form>
+
+        </div>
+    </div>
+    <!-- /.container -->
 
 
     <!-- Core Javascript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="js/mat-js/imagesloaded.pkgd.min.js"></script>
-  <script src="js/mat-js/masonry.pkgd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/materialize/0.98.0/js/materialize.min.js"></script>
-  <script src="js/mat-js/color-thief.min.js"></script>
-  <script src="js/mat-js/galleryExpand.js"></script>
-  <script src="js/mat-js/init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/mat-js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/mat-js/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="js/mat-js/color-thief.min.js"></script>
+    <script src="js/mat-js/galleryExpand.js"></script>
+    <script src="js/mat-js/init.js"></script>
 
-  <script>
-  
-    $(document).ready(function() {
-    // Getting references to our form and inputs
-    var loginForm = $("form.login");
-    var emailInput = $("input#email-input");
-    var passwordInput = $("input#password-input");
+    <script>
+        $(document).ready(function() {
+            // Getting references to our form and inputs
+            var loginForm = $("form.login");
+            var emailInput = $("input#email-input");
+            var passwordInput = $("input#password-input");
 
-    // When the form is submitted, we validate there's an email and password entered
-    loginForm.on("submit", function(event) {
-      event.preventDefault();
-      var userData = {
-        email: emailInput.val().trim(),
-        password: passwordInput.val().trim()
-      };
+            // When the form is submitted, we validate there's an email and password entered
+            loginForm.on("submit", function(event) {
+                event.preventDefault();
+                var userData = {
+                    email: emailInput.val().trim(),
+                    password: passwordInput.val().trim()
+                };
 
-      if (!userData.email || !userData.password) {
-        return;
-      }
+                if (!userData.email || !userData.password) {
+                    return;
+                }
 
-      // If we have an email and password we run the loginUser function and clear the form
-      loginUser(userData.email, userData.password);
-      emailInput.val("");
-      passwordInput.val("");
-    });
+                // If we have an email and password we run the loginUser function and clear the form
+                loginUser(userData.email, userData.password);
+                emailInput.val("");
+                passwordInput.val("");
+            });
 
-    // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-    function loginUser(email, password) {
-      $.post("/api/login", {
-        email: email,
-        password: password
-      }).then(function(data) {
-        window.location.replace(data);
-        // If there's an error, log the error
-      }).catch(function(err) {
-        console.log(err);
-      });
-    }
+            // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+            function loginUser(email, password) {
+                $.post("/api/login", {
+                    email: email,
+                    password: password
+                }).then(function(data) {
+                    window.location.replace(data);
+                    // If there's an error, log the error
+                }).catch(function(err) {
+                    console.log(err);
+                });
+            }
 
-  });
+        });
+    </script>
 
-  </script>
+</body>
 
-  </body>
 </html>
