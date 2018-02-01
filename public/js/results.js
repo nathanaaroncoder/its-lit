@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    $('#resultsModal').modal();
+    $('#modal1').modal();
 
     var startGal = $('.start-gallery'); //EVERYTHING 
             var pID = $('<div id="portfolio" class="section gray">');
@@ -86,11 +86,15 @@ $(document).ready(function(){
 
 
       $(document).on("click", ".gallery-item", function(){
+        $("#modal-text").empty();
+
+
           console.log("Is the gallery item clicking?")
         var index = $(this).attr("data-storageIndex");
         index = parseInt(index);
         console.log(`index: ${index}`);
         console.log(`data storage: ${dataStorage[index].User.name}`);
+            $("#modal-title").text(`${dataStorage[index].title}`);
             $("#modal-text").append($("<br>"));
             $("#modal-text").append($(`<i class='small material-icons'>account_circle</i>`));           
             $("#modal-text").append(`  ${dataStorage[index].User.name} has this book`);
@@ -164,7 +168,7 @@ $(document).ready(function(){
           }
           thisAuthor = thisAuthor.toLowerCase();
   
-          var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&filter=ebooks&key=AIzaSyCeH0ntzIH5qUGfnIumk6woxDQp7mRZDlA"
+          var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&filter=ebooks&key=AIzaSyDyCXyFyEjjLb65OS1FWCWvIbdcCE0EAAA"
           $.ajax({
               url: queryURL,
               method: "GET"
@@ -176,7 +180,13 @@ $(document).ready(function(){
                       var bookTitle = answer[0].volumeInfo.title;
                       var bookAuthors = answer[0].volumeInfo.authors;
                       var bookYear = answer[0].volumeInfo.publishedDate;
-                      var bookCategories = answer[0].volumeInfo.categories;
+                      var bookCategories = data[i].genre;
+
+                      function capitalizeFirstLetter(string) {
+                        return string.charAt(0).toUpperCase() + string.slice(1);
+                    }
+
+                        bookCategories = capitalizeFirstLetter(bookCategories);
                       var bookCover = answer[0].volumeInfo.imageLinks.thumbnail;
       
                       if (bookCover) {
@@ -184,22 +194,24 @@ $(document).ready(function(){
                           console.log("answer is: " + bookTitle + " categories: " + bookCategories + " || " +
                               "pic:  " + bookCover);
                           console.log(response.items);
-      
+                        
                           var column = $('<div class="col m6 s12 gallery-item gallery-horizontal gallery-expand">');
                            //gallery-filter GENRE FROM DB
+                           var modalATag = $("<a>");
                            column.attr("data-storageIndex", i);
-                           column.attr("href", "#resultsModal");
+                           modalATag.attr("href", "#modal1");
+                           modalATag.addClass("modal-trigger");
                           var curveWrap = $(' <div class="gallery-curve-wrapper">');
                           var aWrap = $('<a class="gallery-cover gray" style="height: 250px; width: 170px;">');
                           var imgTag = $('<img src="' + bookCover + '" alt="placeholder" style="height: 250px;">');
                           var galleryHeader = $('<div class="gallery-header" style="height: 250px;">');
                           galleryHeader.html('<h5>' + bookTitle + '</h5>' + '<p>Author(s): ' + bookAuthors +
-                              '<br> Categorie(s): ' + bookCategories + '<br>Published: ' + bookYear + '</p>');
+                              '<br> Genre: ' + bookCategories + '<br>Published: ' + bookYear + '</p>');
                           var galleryBody = $('<div class="gallery-body">');
                           var wrapTitle = $('<div class="title-wrapper">');
       
-      
-                          column.appendTo(row);
+                        column.appendTo(modalATag);
+                          modalATag.appendTo(row);
                           curveWrap.appendTo(column);
                           aWrap.appendTo(curveWrap);
                           imgTag.appendTo(aWrap);

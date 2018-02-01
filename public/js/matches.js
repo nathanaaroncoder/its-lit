@@ -111,10 +111,10 @@ $(document).ready(function(){
 
     else{
 
-    	var randomNum = Math.floor(Math.random() * userPreferences.length);
+    	// var randomNum = Math.floor(Math.random() * userPreferences.length);
 
-    	var randomCategory = userPreferences[randomNum];
-   		console.log("random category: " + randomCategory)
+    	// var randomCategory = userPreferences[randomNum];
+   		// console.log("random category: " + randomCategory)
 
    		var queryUrl = "/api/books/" + thisUserId + "/";
 
@@ -216,7 +216,7 @@ $(document).ready(function(){
 
         $.ajax({
             method: "GET",
-            url: "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&filter=ebooks&key=AIzaSyCeH0ntzIH5qUGfnIumk6woxDQp7mRZDlA"
+            url: "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&filter=ebooks&key=AIzaSyDyCXyFyEjjLb65OS1FWCWvIbdcCE0EAAA"
           }).then(function(data){
               console.log(data.items[0].id);
                var gBookId = data.items[0].id;
