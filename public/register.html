@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Register</title>
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Rammetto+One" rel="stylesheet">
 	<script src="https://use.fontawesome.com/227ddb778d.js"></script>
 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -22,7 +22,7 @@
 		margin: 0 2px;
 		width: 30px;
 		height: 30px;
-		background-color: #337ab7;
+		/* background-color: #337ab7; */
 	}
 
 	#shift {
@@ -33,7 +33,7 @@
 		padding-top: 33px;
 		margin-top: 50px;
 		border-style: solid;
-		background-color: white;
+		/* background-color: white; */
 		padding-top: 26px !important;
 	}
 
@@ -55,45 +55,70 @@
     transform: translateY(-10px);
 	}
 
-	h5 {
-		font-family: 'Rammetto One', cursive;
+	select{
+		position: relative;
+		z-index: 100;
 	}
 
+	#dropdown1, #dropdown2, #dropdown3{
+		position: absolute;
+		z-index: 9;
+	}
+
+	nav{
+		position: relative;
+		z-index: 1;
+	}
+
+	.card{
+		cursor: pointer;
+		margin: 40px;
+	}
+
+	#book-form-section{
+		margin-left: -20px;
+	}
+/* 
 	p {
 		font-family: 'Open Sans', sans-serif;
-	}
+	} */
 </style>
 <body>
 
-	<!-- Navbar and Header -->
-	<nav class="nav-extended">
-			<div class="nav-background">
-			  <div class="pattern active" style="background-image: url('images/introbooks.jpeg');"></div>
-			</div>
-			<div class="nav-wrapper container">
-			  <a href="index.html" class="brand-logo"><i class="material-icons">camera</i>It's Lit</a>
-			  <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-			  <ul class="right hide-on-med-and-down">
-			   
-				<li><a class='dropdown-button' href='#' data-activates='feature-dropdown' data-belowOrigin="true" data-constrainWidth="false">User Account<i class="material-icons right">arrow_drop_down</i></a></li>
-			  </ul>
-			  <!-- Dropdown Structure -->
-			  <ul id='feature-dropdown' class='dropdown-content'>
-				<li><a href="/results">All Books</a></li>
-				<li><a href="/profile">Profile</a></li>
-				<li><a href="/logout">Logout</a></li>
-		
-			  </ul>
-		
-			  <div class="nav-header center">
-					<h1>First, We'll Need the Basics: </h1>
-				   <!-- <h5> Sign up with your e-mail, town and what books you have and want to borrow. From there, you'll have access to books in your area that are ready to be borrowed! Once you've returned the book, you're lit.</h5> -->
-				  </div>
-			</div>
-		  </nav>
+<!-- Navbar and Header -->
+<nav class="nav-extended">
+        <div class="nav-background">
+            <div class="pattern active" style="background-image: url('images/introbooks.jpeg');"></div>
+        </div>
+        <div class="nav-wrapper container">
+            <a href="landing.html"> <img src="images/itslit1.png" id="hold-logo" class="lit-props"></a>
+
+
+            <!-- <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+
+                <li><a class='dropdown-button' href='#' data-activates='feature-dropdown' data-belowOrigin="true" data-constrainWidth="false">User Account<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul> -->
+       
+            <div class="nav-header center">
+                <h3 id="dynamic-header">First, We'll Need the Basics:</h3>
+
+            </div>
+        </div>
+    </nav>
+
+			<ul class="side-nav" id="nav-mobile">
+				<li class="active"><a href="index.html"><i class="material-icons">flare</i>Gallery</a></li>
+				<li><a href="index-dark.html"><i class="material-icons">brightness_3</i>Dark Theme</a></li>
+				<li><a href="blog.html"><i class="material-icons">edit</i>Blog</a></li>
+				<li><a href="docs.html"><i class="material-icons">school</i>Docs</a></li>
+				<li><a href="full-header.html"><i class="material-icons">fullscreen</i>Fullscreen Header</a></li>
+				<li><a href="horizontal.html"><i class="material-icons">swap_horiz</i>Horizontal Style</a></li>
+				<li><a href="no-image.html"><i class="material-icons">texture</i>No Image Expand</a></li>
+			</ul>
 		
 
-  <div class="amber black-text resize" id="formOne" href="#one!"  style="z-index: 4">
+  <div class="white resize" id="formOne" href="#one!"  style="z-index: 4">
 		<div class="row">
 			<!-- <h5 class="center-align">First, We'll Need the Basics: </h5> -->
 			<form class="offset-s3 col s6">
@@ -132,14 +157,9 @@
 		</div>
     </div>
 
-     <div class="amber black-text resize" id="formTwo" href="#two!" style="z-index: 3">
-		<div class="row" >
-			<form class="offset-s3 col s7">
-				<div class="row">
-					<div class="col s12">
-						<h5 class="center-align">What Books Can You Lend?</h5>
-					</div>
-				</div>
+     <div class="white resize" id="formTwo" href="#two!" style="z-index: 3">
+		<div class="row">
+			<form class="offset-s2 col s7">
 				<div class="row">
 					<div class="input-field col s4">
 						<input id="title1" type="text" class="validate">
@@ -157,6 +177,7 @@
 							<option value="action">Action/Adventure</option>
 							<option value="fantasy">Fantasy</option>
 							<option value="classic">Classic</option>
+							<option value="YA">Young Adult</option>
 						</select>
 						<label>Genre</label>
 					</div>
@@ -178,6 +199,7 @@
 							<option value="action">Action/Adventure</option>
 							<option value="fantasy">Fantasy</option>
 							<option value="classic">Classic</option>
+							<option value="YA">Young Adult</option>
 						</select>
 						<label>Genre</label>
 					</div>
@@ -199,6 +221,7 @@
 							<option value="action">Action/Adventure</option>
 							<option value="fantasy">Fantasy</option>
 							<option value="classic">Classic</option>
+							<option value="YA">Young Adult</option>
 						</select>
 						<label>Genre</label>
 					</div>
@@ -211,19 +234,19 @@
 			</form>
 		</div>
     </div>
-     <div class="amber black-text resize" href="#three!"  style="z-index: 2">
+     <div class="white resize" href="#three!"  style="z-index: 2">
 		<div class="row center-align">
-			<div class="offset-s1 col s3 iconBox">
+			<div class="offset-s1 col s3 iconBox card">
 				<i class="fa fa-user-secret fa-4x aniIcon" aria-hidden="true"></i>
 				<h5 class="genre">Mystery</h5>
 				<p>Can't resist a good "Whodunit"</p>
 			</div>
-			<div class="col s3 iconBox">
+			<div class="col s3 iconBox card">
 				<i class="fa fa-eye fa-4x aniIcon" aria-hidden="true"></i>
 				<h5 class="genre">Horror</h5>
 				<p>Has a secret love for what goes "bump" in the night</p>
 			</div>
-			<div class="col s3 iconBox">
+			<div class="col s3 iconBox card">
 				<i class="fa fa-users fa-4x aniIcon" aria-hidden="true"></i>
 				<h5 class="genre">Young Adult</h5>
 				<p>For those young and young at heart</p>
@@ -231,17 +254,17 @@
 		</div>
 		<div class="row"></div>
 		<div class="row center-align">
-			<div class="offset-s1 col s3 iconBox">
+			<div class="offset-s1 col s3 iconBox card">
 				<i class="fa fa-magic fa-4x aniIcon" aria-hidden="true"></i>
 				<h5 class="genre">Fantasy</h5>
 				<p>Never outgrew those childhood fairy-tales</p>
 			</div>
-			<div class="col s3 iconBox">
+			<div class="col s3 iconBox card">
 				<i class="fa fa-compass fa-4x aniIcon" aria-hidden="true"></i>
 				<h5 class="genre">Action/Adventure</h5>
 				<p>Your heart longs for the Wild Blue Yonder</p>
 			</div>
-			<div class="col s3 iconBox">
+			<div class="col s3 iconBox card">
 				<i class="fa fa-university fa-4x aniIcon" aria-hidden="true"></i>
 				<h5 class="genre">Classic</h5>
 				<p>Loves to party Old-School</p>
@@ -255,6 +278,8 @@
  	var userId = moment().format("x").toString();
 	var formOne = $("#formOne");
 	var visible = true;
+	var emailInput;
+	var passwordInput;
 
 	var formTwo = $("#formTwo");
 	formTwo.hide();
@@ -282,7 +307,7 @@
 
 	$(".iconBox").on("click", function () {
 		//use conditional if the tile clicked on is action/adventure or Young Adult//
-
+		$(this).addClass("red");
 		var changedGenre = $(this).find("h5").text().toLowerCase();
 
 		$.ajax(`/api/users/${userId}/${changedGenre}`, {
@@ -290,9 +315,11 @@
 		}).then(function(data) {
 			console.log("Genre Changed!")
 		
-	})
+			
+		
+	});
 
-	})	
+	});	
 
 	$("#updateGen").on("click", function () {
 
@@ -314,7 +341,43 @@
 	})
 
 
+
+	$("#seeMatches").on("click", function () {
+
+	
+		console.log(emailInput);
+		console.log(passwordInput);
+		
+
+		loginUser(emailInput, passwordInput);
+		emailInput.val("");
+		passwordInput.val("");
+
+  })
+
+// loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+function loginUser(email, password) {
+		$.post("/api/login", {
+			email: email,
+			password: password
+		}).then(function(data) {
+			window.location.replace(data);
+			// If there's an error, log the error
+		}).catch(function(err) {
+			console.log(err);
+		});
+  }
+
+
+
+
+
 	$("#userSubmit").on("click", function () {
+		emailInput = $("#email").val().trim();
+        passwordInput = $("#password").val().trim();
+
+		$("#dynamic-header").text("What Books Can You Lend?");
+
 		var newProfile = {
 		name: $("#name").val().trim(),
 		city: $("#city").val().trim(),	
@@ -360,7 +423,29 @@
 			UserUserId: userId			
 		}
 
-		var bookList = [firstBook, secondBook, thirdBook];
+		var bookList = [];
+		console.log("FIRST BOOK BELOW:")
+		console.log(firstBook);
+		console.log("second BOOK BELOW:")
+		console.log(secondBook)
+		console.log("third BOOK BELOW:")
+		console.log(thirdBook)
+
+		if (firstBook.title && firstBook.author){
+		bookList.push(firstBook);
+		console.log(bookList);
+		}
+
+		if (secondBook.title && secondBook.author){
+		bookList.push(secondBook);
+		console.log(bookList);
+		}
+
+		if (thirdBook.title && thirdBook.author){
+			bookList.push(thirdBook);
+			console.log(bookList); 
+		}
+	
 
 		for (var i = 0; i < bookList.length; i++) {
 			$.ajax("/api/books", {
@@ -368,24 +453,16 @@
 			data: bookList[i],
 		}).then(function(data) {
 			console.log("Book Submitted")
-			console.log(data);
-		});
+			console.log(data);})
 		}	
+
 		});
 		
 
 
 	})
 
- //    $.ajax("/new",{
- //      type: "POST",
- //      data: newBurger,
- //    }).then(function(data){
- //        getBurgers();
- //        location.reload();
-
- //    });
-  
+ 
 
 </script>
 

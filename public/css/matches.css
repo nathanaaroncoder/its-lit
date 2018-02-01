@@ -1,3 +1,11 @@
+nav {
+    color: #fff;
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255, 149, 28, 1)), color-stop(23%, rgba(246, 92, 46, 1)), color-stop(37%, rgba(242, 58, 58, 1)), color-stop(100%, rgba(128, 4, 70, 1)));
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+}
+
 .book-image{
     width: 330px;
 }
@@ -23,6 +31,10 @@
 }
 
 #modal-h3{
+    text-align: center;
+}
+
+#modal-text{
     text-align: center;
 }
 

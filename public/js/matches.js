@@ -8,6 +8,7 @@ $(document).ready(function(){
   var dataLen;
   var dataStorage;
   var tempIndex = 0;
+  var distance;
     // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function(data) {
@@ -141,42 +142,73 @@ $(document).ready(function(){
 
             findNewBook(dataStorage[tempIndex]);
 
-            $("#modal-text").append($("<br>"));
-            $("#modal-text").append($(`<i class='small material-icons'>account_circle</i>`));           
-            $("#modal-text").append(`  ${dataStorage[tempIndex].User.name} has this book`);
-            $("#modal-text").append($("<br>"));
-            $("#modal-text").append($("<br>"));
-            var newMailTo = $("<a>");
-            newMailTo.attr("href", "mailto:" + dataStorage[tempIndex].User.email + "?Subject=Your%20Book%20is%20Lit");
-            newMailTo.text("here");
-            $("#modal-text").append($("<i class='small material-icons'>email</i>"));
-            $("#modal-text").append(`  Email `);
-            $("#modal-text").append(dataStorage[tempIndex].User.name);
-            $("#modal-text").append(" ");
-            $("#modal-text").append(newMailTo);
+            $.ajax({
+                method: "GET",
+                url: `/api/users/${thisUserId}`
+              }).then(function(data){
+                var userAddress = `${data.city}${data.state}`;
+                var ownerAddress = `${dataStorage[tempIndex].User.city}${dataStorage[tempIndex].User.state}`;
+  
+                findDistance(userAddress,ownerAddress);
+                console.log(userAddress);
+                console.log(ownerAddress);
+                console.log(distance);
+              })
+             
+  
+  
+  
+              // <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">Send Mail</a>
+  
+              
+  
+      })
+  
+  
+  
+  
+    }
+  
+  
+  
+    }); 
+  
+  
+  });
+  
+  
+  
+  
+      function findDistance (userAddress, ownerAddress) {
+          var proxy = 'https://cors-anywhere.herokuapp.com/';
+          queryUrl = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${userAddress}&destinations=${ownerAddress}&key=AIzaSyCPuyAmcaGASa9ymUw16xO4oRTaSde7fv0`
+          $.ajax({
+                  method: "GET",
+                  url: proxy+queryUrl
+                }).then(function(data){
+                    console.log("hopefully the distance")
+                    console.log(data.rows[0].elements[0].distance.text);
+  
+                  distance =  (data.rows[0].elements[0].distance.text);
 
-
-
-            // <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">Send Mail</a>
-
-            
-
-    })
-
-
-
-
-  }
-
-
-
-  }); 
-
-
-});
-
-
-
+                  $("#modal-text").append($("<br>"));
+                  $("#modal-text").append($(`<i class='small material-icons'>account_circle</i>`));           
+                  $("#modal-text").append(`  ${dataStorage[tempIndex].User.name} has this book and is ${distance} away from you`);
+                //   $("#modal-text").append($("<br>"));
+                //   $("#modal-text").append($("<br>"));
+                //   $("#modal-text").append(` This user is ${distance} away from you`);
+                  $("#modal-text").append($("<br>"));
+                  $("#modal-text").append($("<br>"));
+                  var newMailTo = $("<a>");
+                  newMailTo.attr("href", "mailto:" + dataStorage[tempIndex].User.email + "?Subject=Your%20Book%20is%20Lit");
+                  newMailTo.text("here");
+                  $("#modal-text").append($("<i class='small material-icons'>email</i>"));
+                  $("#modal-text").append(`  Email `);
+                  $("#modal-text").append(dataStorage[tempIndex].User.name);
+                  $("#modal-text").append(" ");
+                  $("#modal-text").append(newMailTo);
+                })
+      }
 
 
 

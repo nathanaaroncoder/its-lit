@@ -38,6 +38,8 @@ $(document).ready(function() {
 
 
       for (let i = 0; i < data.length; i++) {
+    
+        var card = $("<div class='card col s4' style='width: 400px; padding: 10px; margin: 10px;'>");
         var newTitle = $("<h5>");
         newTitle.text("Title: ");
         newTitle.append($("<span>").text(data[i].title));
@@ -59,9 +61,11 @@ $(document).ready(function() {
           newButton.addClass("red");
         }
     
-        $(".book-container").append(newTitle);
-        $(".book-container").append(newAuthor);
-        $(".book-container").append(newButton);
+        card.append(newTitle);
+        card.append(newAuthor);
+        card.append(newButton);
+
+        $(".book-container").append(card);
       }
     });
 
