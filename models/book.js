@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false
     },
     picLink: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
     description: {
       type: DataTypes.TEXT
