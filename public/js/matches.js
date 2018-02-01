@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-    var thisUserId;
+  var thisUserId;
 
   var userPreferences = [];
 
@@ -85,7 +85,7 @@ $(document).ready(function(){
       }).then(function(data){
       console.log(data);
 
-      dataLen = data.length;
+     dataLen = data.length;
      dataStorage = data;
      console.log("dataLen: " + dataLen)
 
@@ -130,7 +130,7 @@ $(document).ready(function(){
     	
       }).then(function(data){
 
-                console.log("data")
+            console.log("data")
             console.log(data);
 
             console.log(data[0].title);
@@ -141,9 +141,19 @@ $(document).ready(function(){
 
             findNewBook(dataStorage[tempIndex]);
 
+            $.ajax({
+              method: "GET",
+              url: `/api/users/${thisUserId}`
+            }).then(function(data){
+              var userAddress = `${data.city}${data.state}`;
+              var ownerAddress = `${dataStorage[tempIndex].User.city}${dataStorage[tempIndex].User.state}`;
+
+              var distance = findDistance(userAddress,ownerAddress);
+            })
             $("#modal-text").append($("<br>"));
             $("#modal-text").append($(`<i class='small material-icons'>account_circle</i>`));           
             $("#modal-text").append(`  ${dataStorage[tempIndex].User.name} has this book`);
+            $("#modal-text").append(` This user is ${distance} away from you`);
             $("#modal-text").append($("<br>"));
             $("#modal-text").append($("<br>"));
             var newMailTo = $("<a>");
@@ -176,6 +186,18 @@ $(document).ready(function(){
 });
 
 
+
+
+    function findDistance (userAddress, ownerAddress) {
+        var proxy = 'https://cors-anywhere.herokuapp.com/';
+        queryUrl = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${userAddress}&destinations=${ownerAddress}&key=AIzaSyCPuyAmcaGASa9ymUw16xO4oRTaSde7fv0`
+        $.ajax({
+                method: "GET",
+                url: proxy+queryUrl
+              }).then(function(data){
+                return (data.rows[0].elements[0].distance.text);
+              })
+    }
 
 
 
@@ -293,6 +315,11 @@ $(document).on("click", "#dislike", function(){
     alert("Those are all the books with genres you like!");
 }
 });
+
+
+
+
+
 
 });
    

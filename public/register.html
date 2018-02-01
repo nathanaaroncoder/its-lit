@@ -18,16 +18,6 @@
 		top: 0px;
 	}
 
-	.onNow {
-		margin: 0 2px;
-		width: 30px;
-		height: 30px;
-		background-color: #337ab7;
-	}
-
-	#shift {
-		margin-top: 80px;
-	}
 	.iconBox {
 		height: 210px;
 		padding-top: 33px;
@@ -157,6 +147,7 @@
 							<option value="action">Action/Adventure</option>
 							<option value="fantasy">Fantasy</option>
 							<option value="classic">Classic</option>
+							<option value="YA">Young Adult</option>
 						</select>
 						<label>Genre</label>
 					</div>
@@ -178,6 +169,7 @@
 							<option value="action">Action/Adventure</option>
 							<option value="fantasy">Fantasy</option>
 							<option value="classic">Classic</option>
+							<option value="YA">Young Adult</option>
 						</select>
 						<label>Genre</label>
 					</div>
@@ -199,6 +191,7 @@
 							<option value="action">Action/Adventure</option>
 							<option value="fantasy">Fantasy</option>
 							<option value="classic">Classic</option>
+							<option value="YA">Young Adult</option>
 						</select>
 						<label>Genre</label>
 					</div>
@@ -247,6 +240,11 @@
 				<p>Loves to party Old-School</p>
 			</div>
 		</div>
+		<div class="row">
+			<div class="offset-s9 col s3">
+				<a class="btn waves-effect white grey-text darken-text-2 submitBtn" id="seeMatches">Find My Matches!</a>
+			</div>
+		</div>
     </div>
 </div>
 
@@ -279,121 +277,83 @@
 		});
 
 
+	$(".iconBox").on("click", function () {
+		//use conditional if the tile clicked on is action/adventure or Young Adult//
 
-		$(".iconBox").on("click", function () {
-			//use conditional if the tile clicked on is action/adventure or Young Adult//
+		var changedGenre = $(this).find("h5").text().toLowerCase();
 
-			var changedGenre = $(this).find("h5").text().toLowerCase();
-
-			$.ajax(`/api/users/${userId}/${changedGenre}`, {
-				type: "PUT",
-			}).then(function(data) {
-				console.log("Genre Changed!")
-			
-			})
-
+		$.ajax(`/api/users/${userId}/${changedGenre}`, {
+			type: "PUT",
+		}).then(function(data) {
+			console.log("Genre Changed!")})
+    
 		})	
 
-		$("#updateGen").on("click", function () {
+	$("#seeMatches").on("click", function () {
+		$.ajax("/matches",{
+		      type: "GET",
+		    }).then(function(data){
+		        console.log("Redirect to matches page")});
+		})
+	
 
-			var newProfile = {
-			name: $("#name").val().trim(),
-			city: $("#city").val().trim(),	
-			state: $("#state").val().trim(),
-			password: $("#password").val().trim(),
-			email: $("#email").val().trim(),
-			UserId: userId
-			}
 
-			$.ajax("/api/users", {
+	$("#userSubmit").on("click", function () {
+		var newProfile = {
+		name: $("#name").val().trim(),
+		city: $("#city").val().trim(),	
+		state: $("#state").val().trim(),
+		password: $("#password").val().trim(),
+		email: $("#email").val().trim(),
+		UserId: userId
+		}
+
+		$.ajax("/api/users", {
 				type: "POST",
 				data: newProfile,
 			}).then(function(data) {
-				console.log("Hi")
-			})
-		})
-
-
-		$("#userSubmit").on("click", function () {
-			var newProfile = {
-			name: $("#name").val().trim(),
-			city: $("#city").val().trim(),	
-			state: $("#state").val().trim(),
-			password: $("#password").val().trim(),
-			email: $("#email").val().trim(),
-			UserId: userId
-			}
-
-			$.ajax("/api/users", {
-				type: "POST",
-				data: newProfile,
-			}).then(function(data) {
-				console.log("User Submitted")
-			})
+				console.log("User Submitted")})
 		})
 		
-		$("#bookSubmit").on("click", function () {
-			$.ajax("/api/user_data", {
-				type: "GET"
-			}).then(function(data) {
+	$("#bookSubmit").on("click", function () {
+		$.ajax("/api/user_data", {
+			type: "GET"
+		}).then(function(data) {
 		
-			console.log("Hi")})
-			var firstBook = {
-				title: $("#title1").val().trim(),
-				author: $("#author1").val().trim(),
-				genre: $( "select#dropdown1 option:checked" ).val(),
-				UserUserId: userId
+		console.log("Hi")})
+		var firstBook = {
+			title: $("#title1").val().trim(),
+			author: $("#author1").val().trim(),
+			genre: $( "select#dropdown1 option:checked" ).val(),
+			UserUserId: userId
 
-			}
+		}
 
-			var secondBook = {
-				title: $("#title2").val().trim(),
-				author: $("#author2").val().trim(),
-				genre: $( "select#dropdown2 option:checked" ).val(),
-				UserUserId: userId 
-			}
+		var secondBook = {
+			title: $("#title2").val().trim(),
+			author: $("#author2").val().trim(),
+			genre: $( "select#dropdown2 option:checked" ).val(),
+			UserUserId: userId 
+		}
 
-			var thirdBook = {
-				title: $("#title3").val().trim(),
-				author: $("#author3").val().trim(),
-				genre: $( "select#dropdown3 option:checked" ).val(),
-				UserUserId: userId			
-			}
+		var thirdBook = {
+			title: $("#title3").val().trim(),
+			author: $("#author3").val().trim(),
+			genre: $( "select#dropdown3 option:checked" ).val(),
+			UserUserId: userId			
+		}
 
-			// var apiPicLink;
-			// var apiDescription;
-			var bookList = [];
-			console.log("FIRST BOOK BELOW:")
-			console.log(firstBook);
-			console.log("second BOOK BELOW:")
-			console.log(secondBook)
-			console.log("third BOOK BELOW:")
-			console.log(thirdBook)
+		var bookList = [firstBook, secondBook, thirdBook];
 
-			if (firstBook.title && firstBook.author){
-			bookList.push(firstBook);
-			console.log(bookList);
-			}
+		for (var i = 0; i < bookList.length; i++) {
+			$.ajax("/api/books", {
+			type: "POST",
+			data: bookList[i],
+		}).then(function(data) {
+			console.log("Book Submitted")
+			console.log(data);})
+		}	
 
-			if (secondBook.title && secondBook.author){
-			bookList.push(secondBook);
-			console.log(bookList);
-			}
-
-			if (thirdBook.title && thirdBook.author){
-				bookList.push(thirdBook);
-				console.log(bookList); 
-			}
-
-			for (var i = 0; i < bookList.length; i++) {
-				$.ajax("/api/books", {
-					type: "POST",
-					data: bookList[i],
-				}).then(function(data) {
-					console.log("Book Submitted")
-					console.log(data);
-					});
-			}	
 		});
 		
 
