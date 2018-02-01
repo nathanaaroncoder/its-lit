@@ -1,0 +1,215 @@
+<html>
+
+<head>
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+           * element that contains the map. */
+        
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <!--
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/8a/common.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/8a/util.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/8a/stats.js"></script>
+    -->
+</head>
+
+<body>
+    <h1>Test</h1>
+    <p class="user1-location">User's Location</p>
+    <p class="multiusers-location">User's Location</p>
+    <!--
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPuyAmcaGASa9ymUw16xO4oRTaSde7fv0&amp;libraries=places"></script>
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+        // service = new google.maps.places.PlacesService(map);
+        // service.nearbySearch(request, callback);
+
+        // var map;
+        // var infowindow;
+
+        // function initMap() {
+        //     var pyrmont = {
+        //         lat: -33.867,
+        //         lng: 151.195
+        //     };
+
+        //     map = new google.maps.Map(document.getElementById('map'), {
+        //         center: pyrmont,
+        //         zoom: 15
+        //     });
+
+        //     infowindow = new google.maps.InfoWindow();
+        //     var service = new google.maps.places.PlacesService(map);
+        //     service.nearbySearch({
+        //         location: pyrmont,
+        //         radius: 500,
+        //         type: ['store']
+        //     }, callback);
+        // }
+
+        // function callback(results, status) {
+        //     if (status === google.maps.places.PlacesServiceStatus.OK) {
+        //         for (var i = 0; i < results.length; i++) {
+        //             createMarker(results[i]);
+        //         }
+        //     }
+        // }
+
+        // function createMarker(place) {
+        //     var placeLoc = place.geometry.location;
+        //     var marker = new google.maps.Marker({
+        //         map: map,
+        //         position: place.geometry.location
+        //     });
+
+        //     google.maps.event.addListener(marker, 'click', function() {
+        //         infowindow.setContent(place.name);
+        //         infowindow.open(map, this);
+        //     });
+        // }
+        // Other methods======================================
+        // var proxy = 'https://cors-anywhere.herokuapp.com/';
+
+        // // // A user's sample location 
+        // var loc = ["40.4227829,-74.09269599999999"];
+
+        // // var place = "Morristown, NJ";
+        // // var place2 = ["Somerset, NJ", "Morristown, NJ", "Jersey City, NJ"] ;
+        // // // compare the user's location to other user locations in the database. Arrange locations within the array that are no more than
+        // // // 30miles and only display them; else "no nearby locations within 30 miles"
+
+        // // // Sample latitudes and longitudes for various venues  
+        // var lat = ["42.09912156792428", "41.77221545716217", "40.09580912941788"];
+        // var lng = ["-73.36759834374999", "-71.57682685937499", "-82.56315498437499"];
+
+        // var search = "=";
+
+        // // for (var i = 0; i < lat.length; i++) {
+        // //     query = lat[i] + "," + lng[i] + "|";
+        // //     search = search + query;
+        // // }
+
+        // // // Slice off the last unnecessary pipe 
+        // var final = search.slice(0, -1);
+
+        // var map;
+        // var service;
+        // var infowindow;
+
+        // function initialize() {
+        //     var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+
+        //     map = new google.maps.Map(document.getElementById('map'), {
+        //         center: pyrmont,
+        //         zoom: 15
+        //     });
+
+        //     var request = {
+        //         location: pyrmont,
+        //         radius: '500',
+        //         type: ['restaurant']
+        //     };
+        //     console.log(request);
+        //     service = new google.maps.places.PlacesService(map);
+        //     service.nearbySearch(request, callback);
+        // }
+
+        // function callback(results, status) {
+        //     if (status == google.maps.places.PlacesServiceStatus.OK) {
+        //         for (var i = 0; i < results.length; i++) {
+        //             var place = results[i];
+        //             createMarker(results[i]);
+        //         }
+        //     }
+        // }
+        // initialize();
+        // callback();
+    </script>
+
+
+    <script>
+        var ptagUser = $('user1-location');
+        var ptagOthers = $('multiusers-location');
+        var userCity = "Morristown";
+        var userState = "NJ";
+        var otherUserscity = ['Jersey City', 'Chester'];
+        var otherUsersstate = ['NJ', 'PA'];
+
+        // {
+        //     "destination_addresses": [
+        //         "Jersey City, NJ, USA"
+        //     ],
+        //     "origin_addresses": [
+        //         "Somerset, Franklin Township, NJ 08873, USA"
+        //     ],
+        //     "rows": [
+        //         {
+        //             "elements": [
+        //                 {
+        //                     "distance": {
+        //                         "text": "33.2 mi",
+        //                         "value": 53505
+        //                     },
+        //                     "duration": {
+        //                         "text": "43 mins",
+        //                         "value": 2596
+        //                     },
+        //                     "status": "OK"
+        //                 }
+        //             ]
+        //         }
+        //     ],
+        //     "status": "OK"
+        // }
+
+        var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=somersetnj&destinations=jerseycity&key=AIzaSyCPuyAmcaGASa9ymUw16xO4oRTaSde7fv0";
+
+        $.ajax({
+            url: queryURL,
+            method: 'GET'
+        }).done(function(response) {
+            console.log(queryURL);
+            //loop through destination array var url =
+            // var showMi = response.rows.elements.distance.text;
+
+            // //add the origin adresses mileage to the blank array 
+            // var allMi = [];
+            // // Sort array and arrach the showMi from least to greatest
+
+            // if (usermi == allmi) {
+            //     //add to html 1st
+            // } else {
+            //     //add to html folllowing 
+            // }
+        });
+
+        //map
+        // compare user tp other userlocations(array)
+        //var currentloc = 'userLoc'; //what to compare through the array
+        //locations.map
+    </script>
+
+    <div id="map"></div>
+
+
+</body>
+
+</html>
