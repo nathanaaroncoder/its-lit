@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-    var thisUserId;
+  var thisUserId;
 
   var userPreferences = [];
 
@@ -86,7 +86,7 @@ $(document).ready(function(){
       }).then(function(data){
       console.log(data);
 
-      dataLen = data.length;
+     dataLen = data.length;
      dataStorage = data;
      console.log("dataLen: " + dataLen)
 
@@ -131,7 +131,7 @@ $(document).ready(function(){
     	
       }).then(function(data){
 
-                console.log("data")
+            console.log("data")
             console.log(data);
 
             console.log(data[0].title);
@@ -154,31 +154,18 @@ $(document).ready(function(){
                 console.log(ownerAddress);
                 console.log(distance);
               })
-             
-  
-  
   
               // <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">Send Mail</a>
-  
-              
-  
+ 
       })
-  
-  
-  
-  
+
     }
-  
-  
-  
+
     }); 
   
   
   });
-  
-  
-  
-  
+
       function findDistance (userAddress, ownerAddress) {
           var proxy = 'https://cors-anywhere.herokuapp.com/';
           queryUrl = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${userAddress}&destinations=${ownerAddress}&key=AIzaSyCPuyAmcaGASa9ymUw16xO4oRTaSde7fv0`
@@ -209,7 +196,6 @@ $(document).ready(function(){
                   $("#modal-text").append(newMailTo);
                 })
       }
-
 
 
     function findNewBook(bookData){
@@ -325,6 +311,11 @@ $(document).on("click", "#dislike", function(){
     alert("Those are all the books with genres you like!");
 }
 });
+
+
+
+
+
 
 });
    
