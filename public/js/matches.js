@@ -91,6 +91,20 @@ $(document).ready(function(){
 
      findNewBook(dataStorage[tempIndex]);
 
+     $("#modal-text").append($("<br>"));
+     $("#modal-text").append($(`<i class='small material-icons'>account_circle</i>`));           
+     $("#modal-text").append(`  ${dataStorage[tempIndex].User.name} has this book`);
+     $("#modal-text").append($("<br>"));
+     $("#modal-text").append($("<br>"));
+     var newMailTo = $("<a>");
+     newMailTo.attr("href", "mailto:" + dataStorage[tempIndex].User.email + "?Subject=Your%20Book%20is%20Lit");
+     newMailTo.text("here");
+     $("#modal-text").append($("<i class='small material-icons'>email</i>"));
+     $("#modal-text").append(`  Email `);
+     $("#modal-text").append(dataStorage[tempIndex].User.name);
+     $("#modal-text").append(" ");
+     $("#modal-text").append(newMailTo);
+
     })
 
     }
@@ -224,7 +238,7 @@ $(document).ready(function(){
 
         $.ajax({
             method: "GET",
-            url: "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&key=AIzaSyCeH0ntzIH5qUGfnIumk6woxDQp7mRZDlA"
+            url: "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&filter=ebooks&key=AIzaSyDyCXyFyEjjLb65OS1FWCWvIbdcCE0EAAA"
           }).then(function(data){
               console.log(data.items[0].id);
                var gBookId = data.items[0].id;
