@@ -202,7 +202,7 @@ $(document).ready(function(){
 
         $.ajax({
             method: "GET",
-            url: "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&key=AIzaSyCeH0ntzIH5qUGfnIumk6woxDQp7mRZDlA"
+            url: "https://www.googleapis.com/books/v1/volumes?q=" + thisTitle + "+author=" + thisAuthor + "&filter=ebooks&key=AIzaSyCeH0ntzIH5qUGfnIumk6woxDQp7mRZDlA"
           }).then(function(data){
               console.log(data.items[0].id);
                var gBookId = data.items[0].id;
