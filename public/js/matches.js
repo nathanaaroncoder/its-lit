@@ -91,6 +91,20 @@ $(document).ready(function(){
 
      findNewBook(dataStorage[tempIndex]);
 
+     $("#modal-text").append($("<br>"));
+     $("#modal-text").append($(`<i class='small material-icons'>account_circle</i>`));           
+     $("#modal-text").append(`  ${dataStorage[tempIndex].User.name} has this book`);
+     $("#modal-text").append($("<br>"));
+     $("#modal-text").append($("<br>"));
+     var newMailTo = $("<a>");
+     newMailTo.attr("href", "mailto:" + dataStorage[tempIndex].User.email + "?Subject=Your%20Book%20is%20Lit");
+     newMailTo.text("here");
+     $("#modal-text").append($("<i class='small material-icons'>email</i>"));
+     $("#modal-text").append(`  Email `);
+     $("#modal-text").append(dataStorage[tempIndex].User.name);
+     $("#modal-text").append(" ");
+     $("#modal-text").append(newMailTo);
+
     })
 
     }
