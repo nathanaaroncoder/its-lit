@@ -1,5 +1,6 @@
 $(document).ready(function(){
-
+    var dataStorage;
+    
     $('#modal1').modal();
 
     var startGal = $('.start-gallery'); //EVERYTHING 
@@ -19,7 +20,7 @@ $(document).ready(function(){
     console.log(results);
 
   //   dataLen = data.length;
-      var dataStorage = results;
+      dataStorage = results;
       var horrorStorage = [];
       var yaStorage = [];
       var fantasyStorage = [];
@@ -86,9 +87,9 @@ $(document).ready(function(){
 
 
       $(document).on("click", ".gallery-item", function(){
+
+
         $("#modal-text").empty();
-
-
           console.log("Is the gallery item clicking?")
         var index = $(this).attr("data-storageIndex");
         index = parseInt(index);
@@ -198,7 +199,11 @@ $(document).ready(function(){
                           var column = $('<div class="col m6 s12 gallery-item gallery-horizontal gallery-expand">');
                            //gallery-filter GENRE FROM DB
                            var modalATag = $("<a>");
-                           column.attr("data-storageIndex", i);
+
+                            var allIndex = dataStorage.indexOf(data[i]);
+                        console.log("allIndex: " + allIndex);
+
+                           column.attr("data-storageIndex", allIndex);
                            modalATag.attr("href", "#modal1");
                            modalATag.addClass("modal-trigger");
                           var curveWrap = $(' <div class="gallery-curve-wrapper">');
