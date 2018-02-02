@@ -114,6 +114,15 @@ $(document).ready(function(){
       });
 
       
+     //adding whether checked in or not
+            $("#modal-text").append($("<br>"));
+            $("#modal-text").append($("<br>"));
+            if (dataStorage[index].checkedOut){
+              $("#modal-text").append("This book is lent out");
+            }
+            else{
+              $("#modal-text").append("This book is checked in");
+            } 
     // show all books on page load
     showBooks(results);
     

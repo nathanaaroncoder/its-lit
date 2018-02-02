@@ -393,6 +393,7 @@ function loginUser(email, password) {
 
 		
 	$("#bookSubmit").on("click", function () {
+		$("#dynamic-header").text("Which Genres Do You Prefer?");
 		$.ajax("/api/user_data", {
 			type: "GET"
 		}).then(function(data) {
