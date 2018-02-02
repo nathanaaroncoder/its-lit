@@ -140,7 +140,7 @@
 				</div>
 				<div class="row">
 					<div class="offset-s9 col s3">
-						<a class="btn waves-effect white grey-text darken-text-2 submitBtn" id="userSubmit">Submit</a>
+						<a class="btn waves-effect orange submitBtn" id="userSubmit">Submit</a>
 					</div>
 				</div>
 			</form>
@@ -218,7 +218,7 @@
 				</div>
 				<div class="row">
 					<div class="offset-s9 col s3">
-						<a class="btn waves-effect white grey-text darken-text-2 submitBtn" id="bookSubmit">Submit</a>
+						<a class="btn waves-effect orange submitBtn" id="bookSubmit">Submit</a>
 					</div>
 				</div>
 			</form>
@@ -262,7 +262,7 @@
 		</div>
 		<div class="row">
 			<div class="offset-s9 col s3">
-				<a class="btn waves-effect white grey-text darken-text-2 submitBtn" id="seeMatches">Find My Matches!</a>
+				<a class="btn waves-effect orange submitBtn" id="seeMatches">Find My Matches!</a>
 			</div>
 		</div>
     </div>
@@ -301,13 +301,25 @@
 
 
 	$(".iconBox").on("click", function () {
-		//use conditional if the tile clicked on is action/adventure or Young Adult//
+		
 		$(this).addClass("red");
 		var changedGenre = $(this).find("h5").text().toLowerCase();
 
+		//use conditional if the tile clicked on is action/adventure or Young Adult
+		//so that it matches the column name in the database
+		if (changedGenre == "action/adventure"){
+			changedGenre = "action";
+		}
+		if (changedGenre == "young adult"){
+			changedGenre = "YA";
+		}
+
 		$.ajax(`/api/users/${userId}/${changedGenre}`, {
 			type: "PUT",
+			data: {}
 		}).then(function(data) {
+			console.log("data nect line: ")
+			console.log(data)
 			console.log("Genre Changed!")
 		
 			
@@ -452,16 +464,8 @@ function loginUser(email, password) {
 			
 		}
 
-		// for (var i = 0; i < bookList.length; i++) {
-		// 	$.ajax("/api/books", {
-		// 	type: "POST",
-		// 	data: bookList[i],
-		// }).then(function(data) {
-		// 	console.log("Book Submitted")
-		// 	console.log(data);})
-		// }	
-
-		}); //close book submit
+		
+	}); //close book submit
 
 // we do this function so we don't have to keep going back to the googleBooksAPI each time we want to display a book cover
 	function findBookApiInfo(bookObj){

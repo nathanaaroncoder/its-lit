@@ -63,20 +63,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/results.html"));
   });
 
-  // // cms route loads cms.html
-  // app.get("/cms", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/cms.html"));
-  // });
-
-  // // blog route loads blog.html
-  // app.get("/blog", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/blog.html"));
-  // });
-
-  // // matches route loads matches.html
-  // app.get("/matches", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/matches.html"));
-  // });
+   // Route for logging user out
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
 
 };
 
