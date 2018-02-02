@@ -54,10 +54,12 @@ $(document).ready(function() {
         if (data[i].checkedOut){
           newButton.text("Check In");
           newButton.removeClass("red");
+          newButton.addClass("orange");
 
         }
         else {
           newButton.text("Check Out");
+          newButton.removeClass("orange");
           newButton.addClass("red");
         }
     
