@@ -52,41 +52,44 @@ $(document).ready(function(){
           
       }
 
-      // when click on the different tabs for all/specific genre
-      $(document).on("click", "#all", function(){
+    // show all books on page load
+    showBooks(results);
 
-        showBooks(results);
-      });
+    // when click on the different tabs for all/specific genre
+    $(document).on("click", "#all", function(){
 
-      $(document).on("click", "#horror", function(){
+      showBooks(results);
+    });
 
-        showBooks(horrorStorage);
-      });
+    $(document).on("click", "#horror", function(){
 
-      $(document).on("click", "#classic", function(){
+      showBooks(horrorStorage);
+    });
 
-        showBooks(classicStorage);
-      });
+    $(document).on("click", "#classic", function(){
 
-      $(document).on("click", "#ya", function(){
+      showBooks(classicStorage);
+    });
 
-        showBooks(yaStorage);
-      });
+    $(document).on("click", "#ya", function(){
 
-      $(document).on("click", "#mystery", function(){
+      showBooks(yaStorage);
+    });
 
-        showBooks(mysteryStorage);
-      });
+    $(document).on("click", "#mystery", function(){
 
-      $(document).on("click", "#action", function(){
+      showBooks(mysteryStorage);
+    });
 
-        showBooks(actionStorage);
-      });
+    $(document).on("click", "#action", function(){
 
-      $(document).on("click", "#fantasy", function(){
+      showBooks(actionStorage);
+    });
 
-        showBooks(fantasyStorage);
-      });
+    $(document).on("click", "#fantasy", function(){
+
+      showBooks(fantasyStorage);
+    });
 
       //when user clicks on an item in the gallery
       $(document).on("click", ".gallery-item", function(){
@@ -111,10 +114,8 @@ $(document).ready(function(){
             $("#modal-text").append(dataStorage[index].User.name);
             $("#modal-text").append(" ");
             $("#modal-text").append(newMailTo);
-      });
 
-      
-     //adding whether checked in or not
+            //adding whether checked in or not
             $("#modal-text").append($("<br>"));
             $("#modal-text").append($("<br>"));
             if (dataStorage[index].checkedOut){
@@ -123,8 +124,7 @@ $(document).ready(function(){
             else{
               $("#modal-text").append("This book is checked in");
             } 
-    // show all books on page load
-    showBooks(results);
+      });
     
     });
 
