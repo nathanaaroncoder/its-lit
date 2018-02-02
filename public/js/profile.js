@@ -47,7 +47,7 @@ $(document).ready(function() {
         newAuthor.text("Author: ");
         newAuthor.append($("<span>").text(data[i].author));
         var newButton = $("<button>");
-        newButton.addClass("waves-effect waves-light btn button-borrow");
+        newButton.addClass("waves-effect waves-light btn button-borrow orange");
         newButton.attr("data-bookid", data[i].id);
         newButton.attr("data-checkedout", data[i].checkedOut);
       
@@ -104,6 +104,7 @@ $(document).ready(function() {
       }).then(function(){
         // isCheckedOut = false;
         thisButton.text("Check Out");
+        thisButton.removeClass("orange");
         thisButton.addClass("red");
         thisButton.attr("data-checkedOut", false);
         console.log("ID in AJAX" + id);
@@ -122,6 +123,7 @@ $(document).ready(function() {
         // isCheckedOut = true;
         thisButton.text("Check In");
         thisButton.removeClass("red");
+        thisButton.addClass("orange");
         thisButton.attr("data-checkedOut", true);
         
       });

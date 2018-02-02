@@ -26,8 +26,12 @@ nav {
     color: white;
 }
 
-#thumbs-up, #thumbs-down, #lightbulb{
-    color: #ec6f75;
+#thumbs-down, #lightbulb{
+    color: #8a0f45;
+}
+
+#thumbs-up{
+    color: #fa8233;
 }
 
 #modal-h3{
