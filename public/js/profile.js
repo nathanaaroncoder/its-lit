@@ -1,10 +1,3 @@
-// $(document).ready(function() {
-//   // This file just does a GET request to figure out which user is logged in
-//   // and updates the HTML on the page
-//   $.get("/api/user_data").then(function(data) {
-//     $(".member-name").text(data.email);
-//   });
-// });
 
 $(document).ready(function() {
 
@@ -21,7 +14,6 @@ $(document).ready(function() {
     var bookId = $(".button-borrow").attr("data-bookId", thisUserId);
 
   //get the user id
-  // var test = JSON.stringify(elisheva, null, 2)
     console.log("Now thisUserId " + thisUserId);
 
     $.ajax({
@@ -91,7 +83,6 @@ $(document).ready(function() {
     else {
       checkOut();
     }
-
 
 
 
