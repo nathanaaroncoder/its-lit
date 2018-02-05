@@ -1,129 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>It's Lit</title>
-
     <!-- Lato Font -->
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-
     <!-- Stylesheet -->
     <link href="css/mat-css/gallery-materialize.css" rel="stylesheet">
-
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- Navbar and Header -->
     <nav class="nav-extended">
-        <div class="nav-background">
-            <div class="pattern active" style="background-image: url('images/introbooks.jpeg');"></div>
+      <div class="nav-background">
+        <div class="pattern active" style="background-image: url('images/introbooks.jpeg');"></div>
+      </div>
+      <div class="nav-wrapper container">
+        <a href="landing.html"> <img class="lit-props" src="images/itslit1.png" id="hold-logo"></a>
+        <div class="nav-header center">
+          <h3>What is it?</h3>
+          <h4>An app to lend your books and borrow them from other readers in your area. Once you have a book, you're lit.</h4>
         </div>
-        <div class="nav-wrapper container">
-            <a href="landing.html"> <img class="lit-props" src="images/itslit1.png" id="hold-logo"></a>
-
-            <div class="nav-header center">
-                <h3>What is it?</h3>
-                <h4>An app to lend your books and borrow them from other readers in your area. Once you have a book, you're lit.</h4>
-            </div>
-        </div>
+      </div>
     </nav>
+
     <div id="intro" class="container">
-
-        <div class="row">
-            <h5 style="text-align: center;">How's it work?</h5>
-            <p>Our database is stored with books you can borrow (for free!) in in your area. No need to go out on a weekend night- just meet up with other users through finding new recommendations</p>
-            <div class="col s12 m4">
-                <div class="card" style="height: 250px; text-align: center;">
-                    <div class="card-content">
-                        <span class="card-title">Enter</span>
-                        <i class="medium material-icons">account_circle</i>
-                        <p>Enter your favorite genres and books you own. Based on that, our system matches you to books that might strike your fancy.</p>
-                    </div>
-
-                </div>
+      <div class="row">
+        <h5 style="text-align: center;">How's it work?</h5>
+        <p>Our database is stored with books you can borrow (for free!) in in your area. No need to go out on a weekend night- just meet up with other users through finding new recommendations</p>
+        <div class="col s12 m4">
+          <div class="card" style="height: 250px; text-align: center;">
+            <div class="card-content">
+              <span class="card-title">Enter</span>
+              <i class="medium material-icons">account_circle</i>
+              <p>Enter your favorite genres and books you own. Based on that, our system matches you to books that might strike your fancy.</p>
             </div>
-
-            <div class="col s12 m4">
-                <div class="card" style="height: 250px;  text-align: center;">
-                    <div class="card-content">
-                        <span class="card-title">Match</span>
-                        <i class="medium material-icons">collections_bookmark</i>
-                        <p>Browse from a multitude of books added by users in your area!</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col s12 m4">
-                <div class="card" style="height: 250px;  text-align: center;">
-                    <div class="card-content">
-                        <span class="card-title">Contact</span>
-                        <i class="medium material-icons">comment</i>
-                        <p>After finding a book you want, you can check its availability. Once you've e-mailed the owner, you're on your way to an (intellectually) amazing weekend.</p>
-                    </div>
-
-                </div>
-            </div>
+          </div>
         </div>
-
+        <div class="col s12 m4">
+          <div class="card" style="height: 250px;  text-align: center;">
+            <div class="card-content">
+              <span class="card-title">Match</span>
+              <i class="medium material-icons">collections_bookmark</i>
+              <p>Browse from a multitude of books added by users in your area!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card" style="height: 250px;  text-align: center;">
+            <div class="card-content">
+              <span class="card-title">Contact</span>
+              <i class="medium material-icons">comment</i>
+              <p>After finding a book you want, you can check its availability. Once you've e-mailed the owner, you're on your way to an (intellectually) amazing weekend.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="blue" style="background: #21214d; color: white; padding: 40px;">
-        <div class="container">
-
-            <div id="sign-in" style="margin: 30px; width: 100%;">
-
-                <form class="login">
-                    <div class="row">
-
-                        <div class="input-field">
-                            <input id="email-input" type="text" class="validate">
-                            <label for="email">Email</label>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field">
-                            <input id="password-input" type="password" class="validate">
-                            <label for="password">Password</label>
-
-                        </div>
-
-
-                    </div>
-
-                    <div class="row" style="text-align: center">
-                        <button type="submit" class="waves-effect waves-light btn orange">Sign-in</button>
-                        <a class="waves-effect waves-light btn orange" href="/register">Register</a>
-
-                        <!--1 - IF Not logged in, do not show navigation 
-                2- Else, display navigation
-                3 - for entering fields: create a for loop that goes through the data of users in the database and checks if it is there. If it is: show user's account
-                page and then display the navigation. Else: add text to the html telling that the user needs to correct information and prevent them from going to another page
-                **refer to last in class activity for details
-            -->
-                    </div>
-
-                </form>
-
+      <div class="container">
+        <div id="sign-in" style="margin: 30px; width: 100%;">
+          <form class="login">
+            <div class="row">
+              <div class="input-field">
+                <input id="email-input" type="text" class="validate">
+                <label for="email">Email</label>
+              </div>
             </div>
+            <div class="row">
+              <div class="input-field">
+                <input id="password-input" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row" style="text-align: center">
+              <button type="submit" class="waves-effect waves-light btn orange">Sign-in</button>
+              <a class="waves-effect waves-light btn orange" href="/register">Register</a>
+              <!--1 - IF Not logged in, do not show navigation
+              2- Else, display navigation
+              3 - for entering fields: create a for loop that goes through the data of users in the database and checks if it is there. If it is: show user's account
+              page and then display the navigation. Else: add text to the html telling that the user needs to correct information and prevent them from going to another page
+              
+              -->
+            </div>
+          </form>
         </div>
-
-
-        <img class="lit-books" src="images/bookzalt.png" id="hold-logo" style="width: 100%;">
-        <!-- /.container -->
+      </div>
+      <img class="lit-books" src="images/bookzalt.png" id="hold-logo" style="width: 100%;">
+      <!-- /.container -->
     </div>
-
+    
     <!-- Core Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="js/mat-js/imagesloaded.pkgd.min.js"></script>
@@ -132,48 +104,6 @@
     <script src="js/mat-js/color-thief.min.js"></script>
     <script src="js/mat-js/galleryExpand.js"></script>
     <script src="js/mat-js/init.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            // Getting references to our form and inputs
-            var loginForm = $("form.login");
-            var emailInput = $("input#email-input");
-            var passwordInput = $("input#password-input");
-
-            // When the form is submitted, we validate there's an email and password entered
-            loginForm.on("submit", function(event) {
-                event.preventDefault();
-                var userData = {
-                    email: emailInput.val().trim(),
-                    password: passwordInput.val().trim()
-                };
-
-                if (!userData.email || !userData.password) {
-                    return;
-                }
-
-                // If we have an email and password we run the loginUser function and clear the form
-                loginUser(userData.email, userData.password);
-                emailInput.val("");
-                passwordInput.val("");
-            });
-
-            // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-            function loginUser(email, password) {
-                $.post("/api/login", {
-                    email: email,
-                    password: password
-                }).then(function(data) {
-                    window.location.replace(data);
-                    // If there's an error, log the error
-                }).catch(function(err) {
-                    console.log(err);
-                });
-            }
-
-        });
-    </script>
-
-</body>
-
+    <script src="./js/landing.js"></script>
+  </body>
 </html>

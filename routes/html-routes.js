@@ -11,37 +11,18 @@ module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads login.html
-  // app.get("/", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/login.html"));
-  // });
-
-  // signup route loads signup.html
-  // app.get("/signup", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/signup.html"));
-  // });
-
-
-  // Each of the below routes just handles the HTML page that the user gets sent to.
-
-  // index route loads view.html
+  // root route loads the profile page
   app.get("/", function(req, res) {
+    //if the user is signed in
     if (req.user) {
       res.redirect("/profile");
     }
+    // otherwise send them to landing page to login
     res.sendFile(path.join(__dirname, "../public/landing.html"));
   });
  
 
-  // app.get("/signup", function(req, res) {
-  //   if (req.user) {
-      
-  //     res.redirect("/profile");
-  //   }
-  //   res.sendFile(path.join(__dirname, "../public/signup.html"));
-  // });
-
-   app.get("/register", function(req, res) {
+  app.get("/register", function(req, res) {
     // If the user already has an account send them to the profile page
     if (req.user) {
       res.redirect("/matches");
