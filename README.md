@@ -8,8 +8,8 @@ Find the Heroku-deployed app [here](http://sleepy-peak-84439.herokuapp.com/profi
 
 We recommend signing up by clicking the register button for the best experience of the site, but if you're in a hurry and don't have time for that feel free to use the following login to browse the site.
 
-####Email: y@y.com
-####Password: y
+#### Email: y@y.com
+#### Password: y
 
 
 ## How it works
@@ -57,26 +57,3 @@ The mock-up can be viewed here:
 
 https://app.moqups.com/eririzz/TQx8PmeRVQ/view 
 
-## Psuedo Code
-
-Login/land:
-- Sign Up or register
-	- POST on Submit
-		- Book Table
-		- User Table
-	- Layout Handlebars
-
-- Login
-	- Passport authentication?
-	- Get
-		- User Table
-			- GET/new route
-				- Book table
-				- if ues, show modal
-				- if no, show next
-
-- Profile
-	- GET
-		- Owned Books
-	-Put 
-		- checkout book
