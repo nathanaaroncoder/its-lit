@@ -24,7 +24,7 @@ They can either sign in or register on the landing page.
 
 If they choose to register, they will enter their basic info,
 
-![register-basic](./public/images/screenshots/register-basic.png "Basic Info")
+![register-basics](./public/images/screenshots/register-basics.png "Basic Info")
 
 enter whatever books they're willing to lend out,
 
