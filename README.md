@@ -1,6 +1,6 @@
 # It's Lit!
 ## What is it?
-"It's Lit" is a user-profile centered app that enables users seeking to loan or recieve books from other users in their area. If they are seeking to browse what books to borrow in their area, the user's profile is match with books sotred in a database. In order to expand it, the user can also choose to enter books that they can't find in the database to the list for other users to find. 
+"It's Lit" is a user-profile centered app that enables users to loan or receive books from other users in their area. The user's preferences are matched with books that other people are willing to lend (which we have stored in a database). The user can also choose to go to the results page and browse all the books in the database. If the user has books that they are willing to lend, they can enter the books' information for others to be able to find and borrow.
 
 
 ## Use it!
